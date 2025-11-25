@@ -55,7 +55,7 @@ def run_agent(model: str, api: ERC3, task: TaskInfo):
     ]
 
     # let's limit number of reasoning steps by 20, just to be safe
-    for i in range(20):
+    for i in range(30):
         step = f"step_{i + 1}"
         print(f"Next {step}... ", end="")
 
@@ -65,12 +65,12 @@ def run_agent(model: str, api: ERC3, task: TaskInfo):
             model=model,
             response_format=NextStep,
             messages=log,
-            max_completion_tokens=10000,
+            max_completion_tokens=16384,
         )
 
         api.log_llm(
             task_id=task.task_id,
-            model="openai/"+model, # log in OpenRouter format
+            model=model, # must match slug from OpenRouter
             duration_sec=time.time() - started,
             usage=completion.usage,
         )

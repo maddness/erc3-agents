@@ -11,7 +11,7 @@ MODEL_ID = "gpt-4o"
 res = core.start_session(
     benchmark="store",
     workspace="my",
-    name="Simple SGR Agent",
+    name=f"Simple SGR Agent ({MODEL_ID})",
     architecture="NextStep SGR Agent with OpenAI")
 
 status = core.session_status(res.session_id)
