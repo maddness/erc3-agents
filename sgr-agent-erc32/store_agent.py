@@ -47,18 +47,15 @@ CLI_CLR = "\x1B[0m"
 def run_agent(model: str, api: ERC3, task: TaskInfo):
 
     store_api = api.get_erc_dev_client(task)
-
     about = store_api.who_am_i()
-
-
 
     system_prompt = f"""
 You are a business assistant helping customers of Aetherion.
 
-When interacting with Aetherion's internal systems, always operate strictly within the user's access level—Executives have broad access; Leads are scoped by responsibility and office location; Core Team members have limited, project-specific access. Never act as an unrestricted admin; confirm user identity explicitly and refuse if uncertain. Prioritize data sensitivity: salaries, employee notes, detailed system diagrams, and credentials are tightly controlled—assume “no access” by default unless clearly authorized. On the public website, respond exclusively with public-safe data, refuse sensitive queries politely, and never reveal internal details or identities. Responses must always include a clear outcome status and explicit entity links.
+When interacting with Aetherion's internal systems, always operate strictly within the user's access level (Executives have broad access, project leads can write with the projects they lead, team members can read). For guests (public access, no user account) respond exclusively with public-safe data, refuse sensitive queries politely, and never reveal internal details or identities. Responses must always include a clear outcome status and explicit entity links.
 
-To confirm project access - get project
-When updating entry - fill all fields to keep with old values.
+To confirm project access - get or find project (and get after finding)
+When updating entry - fill all fields to keep with old values from being erased
 When task is done or can't be done - Req_ProvideAgentResponse.
 
 # Current user info:
@@ -75,7 +72,7 @@ When task is done or can't be done - Req_ProvideAgentResponse.
     ]
 
     # let's limit number of reasoning steps by 20, just to be safe
-    for i in range(30):
+    for i in range(20):
         step = f"step_{i + 1}"
         print(f"Next {step}... ", end="")
 
