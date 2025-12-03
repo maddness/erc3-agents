@@ -8,7 +8,7 @@ from erc3 import erc3 as dev, ApiException, TaskInfo, ERC3, Erc3Client
 
 from lib import MyLLM
 
-# this is how you can add custom tools
+# this is how you can add custom tools that work slightly better
 class Req_DeleteWikiPage(BaseModel):
     tool: Literal["/wiki/delete"] = "/wiki/delete"
     file: str
@@ -29,12 +29,11 @@ class Req_ListAllCustomersForUser(BaseModel):
 class Resp_ListAllCustomersForUser(BaseModel):
     customers: List[dev.CompanyDetail]
 
-# wrap this to avoid confusing LLM
+# wrap this with more descriptive names to avoid confusing LLM
 class GetTimesheetReportByProject(dev.Req_TimeSummaryByProject):
     pass
 class GetTimesheetReportByEmployee(dev.Req_TimeSummaryByEmployee):
     pass
-
 class CreateTimesheetEntryForUser(dev.Req_LogTimeEntry):
     pass
 
