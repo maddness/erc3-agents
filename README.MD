@@ -1,75 +1,65 @@
-# ERC3 Sample Agents
+# ERC3 Agents
 
-Sample agents demonstrating how to participate in the ERC3: AI Agents in Action competition.
+Agents for the [ERC3: AI Agents in Action](https://www.timetoact-group.at/events/enterprise-rag-challenge-part-3) competition.
 
-## Getting Started
+## Quick Start
 
-### 1. Get Your API Key
+```bash
+# Set environment variables
+export ERC3_API_KEY=key-...       # Get from https://erc.timetoact-group.at/
+export ANTHROPIC_API_KEY=...      # For Claude agents
+export OPENAI_API_KEY=sk-...      # For SGR agents
 
-To use these agents, you'll need an ERC3 API key:
-
-1. Visit https://erc.timetoact-group.at/
-2. Enter the email address you used during registration
-3. Your API key will be displayed
-
-Note: If you haven't registered yet, https://www.timetoact-group.at/events/enterprise-rag-challenge-part-3 and allow 24 hours for your
-registration to be processed.
-
-### 2. Prerequisites
-
-All agents require:
-- ERC3 SDK - for connecting to the platform and accessing benchmarks
-- ERC3_API_KEY - your competition API key
-- LLM API Key - such as OPENAI_API_KEY or equivalent (depending on the agent)
-
-## Running an Agent
-
-Here's an example of running the sgr-agent-store (a simple agent that solves the store benchmark):
-
-```
-# Set up your environment variables
-export OPENAI_API_KEY=sk-...
-export ERC3_API_KEY=key-...
-
-# Navigate to the agent directory
-cd sgr-agent-store
-
-# Activate your virtual environment (optional but recommended)
-# python3 -m venv venv
-# source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
+# Run production agent (103 tasks, 5 parallel workers)
+cd claude-agent-erc3-prod
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
-
-# Run the agent
-python3 main.py
+./run.sh parallel 5
 ```
 
-this should look like this:
+## Agents
 
-![res/console.png](res/console.png)
+| Agent | Benchmark | Architecture | Score |
+|-------|-----------|--------------|-------|
+| `claude-agent-erc3-prod` | erc3-prod | Anthropic Claude + Tool Use | 100% |
+| `sgr-agent-store` | store | OpenAI + Schema-Guided Reasoning | — |
+| `sgr-agent-erc3` | erc3-dev | OpenAI + Schema-Guided Reasoning | — |
 
-you can also go to the [Web UI]() and view your running session there:
+## Architecture
 
-![res/session.png](res/session.png)
+### Claude Agent (claude-agent-erc3-prod)
 
-Task execution view allows to see interactions of agent with the Benchmark in more detail:
+Production agent with evolution system for iterative prompt improvement:
 
-![res/log.png](res/log.png)
+```
+evolution/
+  state.json          # Current version pointer
+  v103/
+    config.json       # Prompt, rules, examples, tool patches
+```
 
+**Run commands:**
+```bash
+./run.sh parallel 5      # Full run, 5 workers
+./run.sh task t017       # Single task
+./run.sh failed          # Show failures from last run
+./run.sh version         # Current config version
+```
 
+### SGR Agents (sgr-agent-*)
 
-# Available Agents
+[Schema-Guided Reasoning](https://abdullin.com/schema-guided-reasoning/) with Pydantic models and OpenAI structured outputs.
 
-- sgr-agent-store - A simple agent implementation for [STORE benchmark](https://erc.timetoact-group.at/benchmarks/store). It relies on [Schema-Guided Reasoning](https://abdullin.com/schema-guided-reasoning/) to provide adaptive thinking capabilities with a single recursive prompt and gpt-4o.
-- sgr-agent-erc3 - A simple [SGR](https://abdullin.com/schema-guided-reasoning/) NextStep agent for [ERC3-DEV benchmark](https://erc.timetoact-group.at/benchmarks/erc3-dev).
+## Results
 
-# Resources
+Latest run (v103): **103/103 tasks (100%)**
+- Wall-clock time: 6.6 min (5 workers)
+- Avg per task: 18.9 sec
+- Tool calls: 596 total (5.8 per task)
 
-- https://www.timetoact-group.at/events/enterprise-rag-challenge-part-3
-- https://erc.timetoact-group.at/
+## Resources
 
-# Support
-
-You can ask questions in the discord channel (you get a link to that with the registration email)
-
+- [Competition Page](https://www.timetoact-group.at/events/enterprise-rag-challenge-part-3)
+- [ERC3 Platform](https://erc.timetoact-group.at/)
+- [Web UI](https://erc.timetoact-group.at/) — view sessions, tasks, logs

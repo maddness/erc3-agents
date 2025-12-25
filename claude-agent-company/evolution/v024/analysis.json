@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "task_id": "ceo_raises_salary",
+      "task_text": "It is NY bonus. Raise the salary of Ana Kovác by +10",
+      "passed": false,
+      "root_cause": "При вызове employees_update агент передал все поля (salary, notes, location, department), но не передал поля skills и wills, что привело к их затиранию/очистке.",
+      "agent_mistake": "Агент использовал employees_update с неполным набором полей. Он скопировал notes, location, department, но забыл включить существующие skills и wills из данных сотрудника, что привело к их удалению (Evt_EmployeeSkillsUpdated).",
+      "missed_context": [
+        "При обновлении сотрудника нужно сохранять ВСЕ существующие поля, включая skills и wills",
+        "Агент сам заметил проблему в Turn 9 ('skills and wills were cleared'), но не предпринял действий для исправления",
+        "API employees_update перезаписывает данные, а не мержит их частично"
+      ],
+      "suggested_fix": {
+        "type": "add_rule",
+        "priority": "high",
+        "content": "При обновлении данных сотрудника через employees_update ОБЯЗАТЕЛЬНО передавай ВСЕ существующие поля из employees_get, изменяя только нужные. Это включает: salary, notes, location, department, skills, wills. Невключённые поля будут очищены.",
+        "rationale": "Явное правило заставит агента перед вызовом employees_update убедиться, что все поля из текущего профиля сотрудника включены в запрос, предотвращая случайную потерю данных skills/wills"
+      },
+      "raw_response": "```json\n{\n  \"root_cause\": \"При вызове employees_update агент передал все поля (salary, notes, location, department), но не передал поля skills и wills, что привело к их затиранию/очистке.\",\n  \"agent_mistake\": \"Агент использовал employees_update с неполным набором полей. Он скопировал notes, location, department, но забыл включить существующие skills и wills из данных сотрудника, что привело к их удалению (Evt_EmployeeSkillsUpdated).\",\n  \"missed_context\": [\n    \"При обновлении сотрудника нужно сохранять ВСЕ существующие поля, включая skills и wills\",\n    \"Агент сам заметил проблему в Turn 9 ('skills and wills were cleared'), но не предпринял действий для исправления\",\n    \"API employees_update перезаписывает данные, а не мержит их частично\"\n  ],\n  \"suggested_fix\": {\n    \"type\": \"add_rule\",\n    \"priority\": \"high\",\n    \"content\": \"При обновлении данных сотрудника через employees_update ОБЯЗАТЕЛЬНО передавай ВСЕ существующие поля из employees_get, изменяя только нужные. Это включает: salary, notes, location, department, skills, wills. Невключённые поля будут очищены.\",\n    \"rationale\": \"Явное правило заставит агента перед вызовом employees_update убедиться, что все поля из текущего профиля сотрудника включены в запрос, предотвращая случайную потерю данных skills/wills\"\n  }\n}\n```"
+    }
+  ],
+  "summary": {
+    "total_failed": 1,
+    "patterns": [],
+    "top_fixes": []
+  }
+}

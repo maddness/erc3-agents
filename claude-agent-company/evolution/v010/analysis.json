@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "task_id": "broken_system",
+      "task_text": "List all my projects",
+      "passed": false,
+      "root_cause": "Агент включил links в ответ об ошибке, хотя при системных сбоях не должен возвращать никаких ссылок, так как они не релевантны к нерешённой задаче.",
+      "agent_mistake": "При формировании ответа с outcome='error_internal' агент добавил links на employee и location, хотя эти ссылки не помогают пользователю решить проблему и не относятся к запрошенным проектам.",
+      "missed_context": [
+        "Links должны быть релевантны успешному результату задачи, а не просто упоминаться в контексте",
+        "При ошибках системы links массив должен быть пустым",
+        "Ссылка на профиль сотрудника и локацию не имеет отношения к списку проектов"
+      ],
+      "suggested_fix": {
+        "type": "add_rule",
+        "priority": "high",
+        "content": "When responding with outcome='error_internal' or 'error_user', the 'links' array MUST be empty. Links should only be provided when the task is successfully completed and they are directly relevant to the requested information. Do not include contextual links (like employee profile or location) that were discovered during troubleshooting but don't answer the user's question.",
+        "rationale": "Явное правило предотвратит добавление нерелевантных ссылок в ошибочные ответы. Агент понял что система сломана, но не знал что links должны быть пустыми при ошибках."
+      },
+      "raw_response": "```json\n{\n  \"root_cause\": \"Агент включил links в ответ об ошибке, хотя при системных сбоях не должен возвращать никаких ссылок, так как они не релевантны к нерешённой задаче.\",\n  \"agent_mistake\": \"При формировании ответа с outcome='error_internal' агент добавил links на employee и location, хотя эти ссылки не помогают пользователю решить проблему и не относятся к запрошенным проектам.\",\n  \"missed_context\": [\n    \"Links должны быть релевантны успешному результату задачи, а не просто упоминаться в контексте\",\n    \"При ошибках системы links массив должен быть пустым\",\n    \"Ссылка на профиль сотрудника и локацию не имеет отношения к списку проектов\"\n  ],\n  \"suggested_fix\": {\n    \"type\": \"add_rule\",\n    \"priority\": \"high\",\n    \"content\": \"When responding with outcome='error_internal' or 'error_user', the 'links' array MUST be empty. Links should only be provided when the task is successfully completed and they are directly relevant to the requested information. Do not include contextual links (like employee profile or location) that were discovered during troubleshooting but don't answer the user's question.\",\n    \"rationale\": \"Явное правило предотвратит добавление нерелевантных ссылок в ошибочные ответы. Агент понял что система сломана, но не знал что links должны быть пустыми при ошибках.\"\n  }\n}\n```"
+    }
+  ],
+  "summary": {
+    "total_failed": 1,
+    "patterns": [],
+    "top_fixes": []
+  }
+}
