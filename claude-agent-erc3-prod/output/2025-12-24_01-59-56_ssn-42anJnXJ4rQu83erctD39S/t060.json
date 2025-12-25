@@ -1,0 +1,171 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t060",
+    "task_text": "In plain language, explain how deal phases work in our CRM and when a customer moves from 'exploring' to 'active'. Put that to draft_deal_workflow.md for me.",
+    "config_version": "v101",
+    "timestamp": 1766531046.7996721
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "BwFV_001",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Corporate Leadership",
+          "today": "2025-07-17",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.153
+      }
+    ],
+    "timestamp": 1766531049.625577
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "wiki_search",
+        "input": {
+          "query_regex": "deal.*(phase|workflow|stage)|CRM.*(phase|workflow)|exploring.*active"
+        },
+        "output": {
+          "results": [
+            {
+              "content": "5. **Offer & negotiation**\n   - Pricing, volume commitments and service levels are negotiated.\n   - CRM and project registry track phase changes and expected volumes.\n\n6. **Implementation & support**",
+              "linum": 59,
+              "path": "business/marketing_and_sales_approach.md"
+            },
+            {
+              "content": "- High‑level status of opportunities.\n\nAccount managers are expected to keep **deal phases** and **briefs** reasonably up to date, and to link projects correctly to customers. This is essential for meaningful reports and for the chatbot to give accurate answers.\n",
+              "linum": 95,
+              "path": "business/marketing_and_sales_approach.md"
+            },
+            {
+              "content": "- Assigned account manager (employee ID)\n- Short descriptive **brief**\n- Current overall **deal phase**\n- High‑level status (e.g. “Key account”, “Curious but cautious”, “Dormant”)\n",
+              "linum": 16,
+              "path": "systems/crm.md"
+            },
+            {
+              "content": "For each **opportunity / relationship** (at company level):\n\n- The **deal phase**:\n  - `idea` – new lead, early conversation.\n  - `exploring` – deeper exploration, early trials.",
+              "linum": 21,
+              "path": "systems/crm.md"
+            },
+            {
+              "content": "\n- **Sales & Customer Success**\n  - Primary owners of customer records and deal phases.\n- **Customer Service**\n  - Updates contact details and practical information.",
+              "linum": 32,
+              "path": "systems/crm.md"
+            }
+          ]
+        },
+        "duration_sec": 0.055
+      }
+    ],
+    "timestamp": 1766531052.7343428
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "wiki_load",
+        "input": {
+          "file": "systems/crm.md"
+        },
+        "output": {
+          "file": "systems/crm.md",
+          "content": "# CRM – Customer & Deal Tracking\n\nThe **CRM (Customer Relationship Management)** system is the central repository for **customer master data** and **high‑level opportunity tracking**.\n\n## What is stored in the CRM?\n\nFor each **customer company**:\n\n- Customer ID (internal)\n- Name and legal form\n- Main address and country\n- Industry segment (e.g. Rail, Food & Beverage, General Industry)\n- Primary contact name and email\n- Assigned account manager (employee ID)\n- Short descriptive **brief**\n- Current overall **deal phase**\n- High‑level status (e.g. “Key account”, “Curious but cautious”, “Dormant”)\n\nFor each **opportunity / relationship** (at company level):\n\n- The **deal phase**:\n  - `idea` – new lead, early conversation.\n  - `exploring` – deeper exploration, early trials.\n  - `active` – ongoing projects, regular business.\n  - `paused` – no current activity, but not lost.\n  - `archived` – relationship closed or no realistic future business.\n- Optional descriptive notes and tags.\n\n## Who uses the CRM?\n\n- **Sales & Customer Success**\n  - Primary owners of customer records and deal phases.\n- **Customer Service**\n  - Updates contact details and practical information.\n- **Management and Finance**\n  - Use CRM data for pipeline reviews and account prioritisation.\n- **Chatbot**\n  - Answers questions like “Who is the account manager for Customer X?” or “Show all active customers in Germany in the rail segment.”\n\n## Basic rules for using the CRM\n\n1. **Every active customer must exist in CRM.**\n   - No “shadow customers” known only via email or spreadsheets.\n2. **Each customer must have a clear account manager.**\n   - The account manager is responsible for keeping data up to date.\n3. **Use concise and informative briefs.**\n   - Explain who the customer is, what they do and why they matter.\n4. **Maintain deal phases realistically.**\n   - Reflect the true state of the commercial relationship, not wishful thinking.\n\n## Linking to other systems\n\n- **Project registry:**\n  - Projects always reference a **customer ID** from the CRM (unless internal).\n- **Time tracking:**\n  - Time entries for customer work show both the **customer** and the **project**, enabling customer profitability and effort analysis.\n- **Wiki and chatbot:**\n  - Wiki pages may describe key accounts or reference successful case studies.\n  - The chatbot provides quick overviews of customer status, contacts, projects and time summaries.\n\nKeeping CRM data clean and current is critical for accurate reporting and for the chatbot to give trustworthy answers.\n"
+        },
+        "duration_sec": 0.052
+      }
+    ],
+    "timestamp": 1766531055.4399009
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "Now I have a good understanding of how deal phases work in the CRM. Let me also check if there's more detail about when customers transition between phases, particularly from 'exploring' to 'active':"
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_load",
+        "input": {
+          "file": "business/marketing_and_sales_approach.md"
+        },
+        "output": {
+          "file": "business/marketing_and_sales_approach.md",
+          "content": "# Marketing & Sales Approach\n\nBellini Coatings uses a **relationship‑driven, technically supported B2B sales model**. We focus on medium and large industrial customers where coatings are critical to their operations and product quality.\n\n## Positioning\n\nWe present ourselves as:\n\n- A **specialist**, not a generalist commodity supplier.\n- A **partner** that co‑develops solutions with customers.\n- A company that combines **Italian coating heritage** with pragmatic engineering.\n\nOur value proposition is often expressed as:\n> “Tailored industrial coatings backed by experts who know your application.”\n\n## Marketing channels\n\nMarketing is modest in size but focused:\n\n- **Trade fairs and industry events**\n  - Key touchpoint for new leads.\n  - Often coordinated by marketing, attended by sales and technical experts.\n\n- **Technical datasheets and case studies**\n  - Maintained jointly by marketing and R&D.\n  - Linked from the internal wiki and shared via customer portals or email.\n\n- **Targeted outreach**\n  - Regional sales teams focus on clusters (e.g. machinery in southern Germany, rail around major hubs).\n  - Outreach is mostly via email, phone and site visits.\n\n- **Digital presence**\n  - Corporate website and selected online directories.\n  - Limited paid campaigns; emphasis on credibility rather than volume.\n\n## Sales process\n\nThe sales process is structured but implemented in a **very hands‑on, old‑school way**:\n\n1. **Initial contact**\n   - Lead identified via fair, referral or inbound request.\n   - Customer added to CRM; a short **brief** is recorded.\n\n2. **Qualification**\n   - Account manager visits the site, sometimes with a technical sales engineer.\n   - Feasibility is evaluated: volumes, application method, regulatory constraints.\n\n3. **Project creation**\n   - A **project** is created in the project registry for any substantial opportunity.\n   - The project links the customer, the brief and the internal team (sales, R&D, application specialists).\n\n4. **Trials and testing**\n   - Lab work is performed by chemists.\n   - Field tests may be run on customer lines.\n   - Time spent is logged against the project.\n\n5. **Offer & negotiation**\n   - Pricing, volume commitments and service levels are negotiated.\n   - CRM and project registry track phase changes and expected volumes.\n\n6. **Implementation & support**\n   - If successful, the project transitions into an ongoing supply and support phase.\n   - Technical service, quality and logistics remain involved.\n\n## Sales organisation\n\n- **Head of Sales & Marketing**\n  - Responsible for overall sales strategy and key account management.\n\n- **Regional Sales Managers**\n  - Lead sales in geographic clusters (Italy & Balkans, DACH, France/Benelux, Iberia).\n  - Manage account managers and coordinate with technical sales.\n\n- **Key Account Managers (KAMs)**\n  - Own relationships with major customers.\n  - Responsible for pipeline, pricing and coordination with R&D.\n\n- **Technical Sales / Application Specialists**\n  - Bridge between lab and customer.\n  - Understand customer processes and help adapt products for real‑world use.\n\n- **Customer Service / Inside Sales**\n  - Handle orders, confirmations, basic queries and complaints.\n  - Maintain records in CRM and support account managers.\n\n## CRM usage principles\n\nEven though our CRM and project systems are built on **legacy technology**, they are the **single source of truth** for:\n\n- Customer master data.\n- Key contacts and roles.\n- Active and recent projects.\n- High‑level status of opportunities.\n\nAccount managers are expected to keep **deal phases** and **briefs** reasonably up to date, and to link projects correctly to customers. This is essential for meaningful reports and for the chatbot to give accurate answers.\n"
+        },
+        "duration_sec": 0.151
+      }
+    ],
+    "timestamp": 1766531060.7305658
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [
+      "Now I have all the information I need to create a clear, plain-language explanation of deal phases. Let me create the wiki article:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_update",
+        "input": {
+          "file": "draft_deal_workflow.md",
+          "content": "# Deal Phases in Our CRM – A Plain-Language Guide\n\nThis guide explains how deal phases work and when to move a customer from one phase to another.\n\n## What Are Deal Phases?\n\nDeal phases track where a customer relationship stands in our sales process. Every customer in the CRM has a deal phase that reflects the **true state of the commercial relationship** – not wishful thinking, but reality.\n\n## The Five Deal Phases\n\n### 1. Idea\n**What it means:** A brand-new lead or early conversation.\n\n**When to use:** You've just met someone at a trade fair, received a referral, or got an inbound enquiry. You've added them to the CRM with a brief note, but nothing concrete has happened yet.\n\n---\n\n### 2. Exploring\n**What it means:** Deeper exploration and early trials are underway.\n\n**When to use:** The relationship has moved beyond initial contact. You might be:\n- Visiting the customer's site\n- Discussing their specific requirements\n- Running lab tests or field trials\n- Creating a project in the registry to track the opportunity\n\n---\n\n### 3. Active\n**What it means:** Ongoing projects and regular business.\n\n**When to use:** The customer has become a real, working relationship. This typically means:\n- Trials have been successful\n- Pricing and terms have been agreed\n- You're supplying product or providing ongoing support\n- There's regular business activity (orders, technical service, etc.)\n\n---\n\n### 4. Paused\n**What it means:** No current activity, but the relationship isn't lost.\n\n**When to use:** Things have gone quiet – maybe the customer's project was delayed, budgets were frozen, or they're busy with other priorities. You're not actively working together right now, but there's realistic potential to restart.\n\n---\n\n### 5. Archived\n**What it means:** Relationship closed or no realistic future business.\n\n**When to use:** The opportunity is over. Perhaps they chose a competitor, went out of business, or it's clear there's no fit. Move them here to keep your pipeline clean.\n\n---\n\n## When Does a Customer Move from 'Exploring' to 'Active'?\n\nThe transition from **exploring** to **active** happens when you move from \"trying things out\" to \"doing real business together.\"\n\n**Key signals that it's time to switch:**\n\n1. **Trials are complete and successful** – Lab work and field tests have confirmed the product works for their application.\n\n2. **Commercial terms are agreed** – Pricing, volumes, and service levels have been negotiated and accepted.\n\n3. **Regular orders or projects begin** – You're actually supplying product or delivering services, not just testing.\n\n4. **Ongoing support kicks in** – Technical service, quality, and logistics are involved in a sustained way.\n\n**In simple terms:** If you're still figuring out whether this will work, stay in 'exploring'. Once you're actually working together on a regular basis, move to 'active'.\n\n---\n\n## Why This Matters\n\nKeeping deal phases accurate helps everyone:\n- **Management** gets realistic pipeline views\n- **Finance** can forecast properly\n- **The chatbot** gives trustworthy answers about customer status\n- **You** have a clean, honest view of where things stand\n\nWhen in doubt, be realistic – it's better to have an accurate pipeline than an optimistic one.\n"
+        },
+        "output": {},
+        "duration_sec": 0.145
+      }
+    ],
+    "timestamp": 1766531081.4018838
+  },
+  {
+    "type": "llm_turn",
+    "turn": 6,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "I've created `draft_deal_workflow.md` with a plain-language guide to how deal phases work in our CRM. The article covers:\n\n**The five deal phases:**\n1. **Idea** – New leads and early conversations\n2. **Exploring** – Deeper exploration, site visits, trials\n3. **Active** – Ongoing projects and regular business\n4. **Paused** – Temporarily quiet but not lost\n5. **Archived** – Closed relationships\n\n**When to move from 'Exploring' to 'Active':**\nThe transition happens when you move from \"trying things out\" to \"doing real business together\" – specifically when:\n- Trials are complete and successful\n- Commercial terms (pricing, volumes) are agreed\n- Regular orders or projects begin\n- Ongoing support kicks in\n\nThe guide emphasizes keeping phases realistic rather than optimistic, since accurate data helps management, finance, and the chatbot all work better.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "wiki",
+              "id": "draft_deal_workflow.md"
+            },
+            {
+              "kind": "wiki",
+              "id": "systems/crm.md"
+            },
+            {
+              "kind": "wiki",
+              "id": "business/marketing_and_sales_approach.md"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.144
+      }
+    ],
+    "timestamp": 1766531088.266913
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: I've created `draft_deal_workflow.md` with a plain-language guide to how deal phases work in our CRM",
+    "eval_logs": "",
+    "timestamp": 1766531088.32449
+  }
+]

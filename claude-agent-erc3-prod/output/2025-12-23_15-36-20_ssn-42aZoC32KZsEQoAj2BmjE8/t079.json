@@ -1,0 +1,215 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t079",
+    "task_text": " What is workload of Adler Svenja across current projects?",
+    "config_version": "v093",
+    "timestamp": 1766493776.288191
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "FphR_001",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Corporate Leadership",
+          "today": "2025-07-16",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.137
+      }
+    ],
+    "timestamp": 1766493779.71855
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Adler Svenja",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": null
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766493782.507912
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "The search returned null. Let me try with the name in the more common order (first name, last name):"
+    ],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Svenja Adler",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "FphR_019",
+              "name": "Svenja Adler",
+              "email": "FphR_019@bellini.internal",
+              "salary": 85000,
+              "location": "Munich Office – Germany",
+              "department": "Sales & Customer Success"
+            }
+          ]
+        },
+        "duration_sec": 0.044
+      }
+    ],
+    "timestamp": 1766493786.6224551
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "Found Svenja Adler with ID \"FphR_019\". Now let me find all projects she's involved in:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "find_projects_by_employee",
+        "input": {
+          "employee_id": "FphR_019"
+        },
+        "output": {
+          "employee_id": "FphR_019",
+          "projects_found": 2,
+          "projects": [
+            {
+              "project": {
+                "id": "proj_ferro_rail_bogie_anticorrosion",
+                "name": "HV anti-corrosion system for rail bogies",
+                "description": "Development and validation of a high-value anti-corrosion coating system for rail bogies.",
+                "customer": "cust_ferro_rail",
+                "status": "active",
+                "team": [
+                  {
+                    "employee": "FphR_046",
+                    "time_slice": 0.5,
+                    "role": "Lead"
+                  },
+                  {
+                    "employee": "FphR_019",
+                    "time_slice": 0.3,
+                    "role": "Engineer"
+                  },
+                  {
+                    "employee": "FphR_119",
+                    "time_slice": 0.2,
+                    "role": "QA"
+                  },
+                  {
+                    "employee": "FphR_074",
+                    "time_slice": 0.2,
+                    "role": "Ops"
+                  }
+                ]
+              },
+              "employee_role": "Engineer",
+              "time_slice": 0.3
+            },
+            {
+              "project": {
+                "id": "proj_machina_press_line_rationalisation",
+                "name": "Press line coating rationalisation",
+                "description": "Rationalisation of Machina Press coating portfolio across multiple press and conveyor lines.",
+                "customer": "cust_machina_press",
+                "status": "paused",
+                "team": [
+                  {
+                    "employee": "FphR_019",
+                    "time_slice": 0.3,
+                    "role": "Lead"
+                  },
+                  {
+                    "employee": "FphR_047",
+                    "time_slice": 0.4,
+                    "role": "Engineer"
+                  },
+                  {
+                    "employee": "FphR_064",
+                    "time_slice": 0.3,
+                    "role": "Ops"
+                  }
+                ]
+              },
+              "employee_role": "Lead",
+              "time_slice": 0.3
+            }
+          ]
+        },
+        "duration_sec": 0.199
+      }
+    ],
+    "timestamp": 1766493790.678484
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [
+      "I found Svenja Adler's projects. She's involved in 2 current (non-archived) projects:\n\n1. **HV anti-corrosion system for rail bogies** (active) - 0.3 FTE as Engineer\n2. **Press line coating rationalisation** (paused) - 0.3 FTE as Lead\n\nTotal workload: 0.3 + 0.3 = 0.6 FTE"
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Svenja Adler's workload across current projects is 0.6 FTE.\n\nShe is allocated to 2 projects:\n- **HV anti-corrosion system for rail bogies** (active): 0.3 FTE as Engineer\n- **Press line coating rationalisation** (paused): 0.3 FTE as Lead",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "FphR_019"
+            },
+            {
+              "kind": "project",
+              "id": "proj_ferro_rail_bogie_anticorrosion"
+            },
+            {
+              "kind": "customer",
+              "id": "cust_ferro_rail"
+            },
+            {
+              "kind": "project",
+              "id": "proj_machina_press_line_rationalisation"
+            },
+            {
+              "kind": "customer",
+              "id": "cust_machina_press"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.135
+      }
+    ],
+    "timestamp": 1766493798.0183501
+  },
+  {
+    "type": "task_end",
+    "score": 0.0,
+    "summary": "ok_answer: Svenja Adler's workload across current projects is 0.6 FTE.\n\nShe is allocated to 2 projects:\n- **HV ",
+    "eval_logs": "FAIL: expected message to contain '0.9'",
+    "timestamp": 1766493798.070053
+  }
+]

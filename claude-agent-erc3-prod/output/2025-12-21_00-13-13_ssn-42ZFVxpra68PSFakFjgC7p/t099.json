@@ -1,0 +1,157 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t099",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Cyril Charpentier log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v089",
+    "timestamp": 1766265594.707791
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "QR23_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.146
+      },
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Cyril Charpentier",
+          "limit": 5
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "QR23_023",
+              "name": "Cyril Charpentier",
+              "email": "QR23_023@bellini.internal",
+              "salary": 93000,
+              "location": "Paris Office – France",
+              "department": "Sales & Customer Success"
+            }
+          ]
+        },
+        "duration_sec": 0.048
+      }
+    ],
+    "timestamp": 1766265597.633347
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_search",
+        "input": {
+          "employee": "QR23_023",
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "limit": 5
+        },
+        "output": {
+          "entries": [
+            {
+              "id": "te_010",
+              "employee": "QR23_023",
+              "customer": "cust_bellini_internal",
+              "project": "proj_rnd_low_voc_platform_bellini",
+              "date": "2025-02-03",
+              "hours": 3,
+              "work_category": "customer_project",
+              "notes": "Customer meeting and line walk",
+              "billable": true,
+              "status": "submitted"
+            },
+            {
+              "id": "te_011",
+              "employee": "QR23_023",
+              "customer": "cust_bellini_internal",
+              "project": "proj_rnd_low_voc_platform_bellini",
+              "date": "2025-02-10",
+              "hours": 2,
+              "work_category": "internal",
+              "notes": "Internal preparation for trials",
+              "billable": false,
+              "status": "submitted"
+            },
+            {
+              "id": "te_012",
+              "employee": "QR23_023",
+              "customer": "cust_alpinerail_maintenance",
+              "project": "proj_alpinerail_depot_refurb",
+              "date": "2025-02-21",
+              "hours": 4.5,
+              "work_category": "customer_project",
+              "notes": "On‑site support",
+              "billable": true,
+              "status": "submitted"
+            }
+          ],
+          "next_offset": -1,
+          "total_hours": 9.5,
+          "total_billable": 7.5,
+          "total_non_billable": 2
+        },
+        "duration_sec": 0.069
+      }
+    ],
+    "timestamp": 1766265601.4324238
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "I have all the information needed. Let me provide the summary."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Cyril Charpentier logged a total of 9.5 hours:\n\n- **Billable hours:** 7.5\n- **Non-billable hours:** 2\n\nThe time was distributed across:\n- 3 hours on 2025-02-03 (billable) - Low VOC Platform project\n- 2 hours on 2025-02-10 (non-billable) - Internal preparation for trials\n- 4.5 hours on 2025-02-21 (billable) - AlpineRail Depot Refurb project",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "QR23_023"
+            },
+            {
+              "kind": "project",
+              "id": "proj_rnd_low_voc_platform_bellini"
+            },
+            {
+              "kind": "project",
+              "id": "proj_alpinerail_depot_refurb"
+            },
+            {
+              "kind": "customer",
+              "id": "cust_alpinerail_maintenance"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.144
+      }
+    ],
+    "timestamp": 1766265608.8710852
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Cyril Charpentier logged a total of 9.5 hours:\n\n- **Billable hour",
+    "eval_logs": "",
+    "timestamp": 1766265608.930819
+  }
+]

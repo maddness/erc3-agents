@@ -1,0 +1,119 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t100",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Edoardo Basile log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v093",
+    "timestamp": 1766493894.551332
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "Bhwa_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.144
+      }
+    ],
+    "timestamp": 1766493897.859797
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Edoardo Basile",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "Bhwa_131",
+              "name": "Edoardo Basile",
+              "email": "Bhwa_131@bellini.internal",
+              "salary": 57000,
+              "location": "HQ – Italy",
+              "department": "IT & Digital"
+            }
+          ]
+        },
+        "duration_sec": 0.05
+      }
+    ],
+    "timestamp": 1766493901.167691
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "Bhwa_131"
+          ]
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "Bhwa_131",
+              "total_hours": 9.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.052
+      }
+    ],
+    "timestamp": 1766493905.607786
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Edoardo Basile logged a total of 9.5 hours:\n- Billable hours: 7.5\n- Non-billable hours: 2.0",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "Bhwa_131"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.133
+      }
+    ],
+    "timestamp": 1766493914.0086908
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Edoardo Basile logged a total of 9.5 hours:\n- Billable hours: 7.5",
+    "eval_logs": "",
+    "timestamp": 1766493914.0615208
+  }
+]

@@ -1,0 +1,6059 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t077",
+    "task_text": "I want to upskill an employee. Get me a list of employees, that can coach Adler Svenja on his skills to improve them further.",
+    "config_version": "v090",
+    "timestamp": 1766475476.381784
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [
+      "I'll help you find potential coaches for Adler Svenja. Let me start by getting the context and then finding Svenja's current skills."
+    ],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "FphR_001",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Corporate Leadership",
+          "today": "2025-08-04",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.247
+      },
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Adler Svenja",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": null
+        },
+        "duration_sec": 0.099
+      }
+    ],
+    "timestamp": 1766475502.253985
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [
+      "No results for \"Adler Svenja\". Let me try searching with the name in the correct order (first name first):"
+    ],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Svenja Adler",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "FphR_019",
+              "name": "Svenja Adler",
+              "email": "FphR_019@bellini.internal",
+              "salary": 85000,
+              "location": "Munich Office – Germany",
+              "department": "Sales & Customer Success"
+            }
+          ]
+        },
+        "duration_sec": 0.249
+      }
+    ],
+    "timestamp": 1766475528.836925
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "Found Svenja Adler. Now let me get her full profile to see her current skills:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "employees_get",
+        "input": {
+          "id": "FphR_019"
+        },
+        "output": {
+          "employee": {
+            "id": "FphR_019",
+            "name": "Svenja Adler",
+            "email": "FphR_019@bellini.internal",
+            "salary": 85000,
+            "notes": "",
+            "location": "Munich Office – Germany",
+            "department": "Sales & Customer Success",
+            "skills": [
+              {
+                "name": "skill_corrosion",
+                "level": 7
+              },
+              {
+                "name": "skill_crm",
+                "level": 7
+              },
+              {
+                "name": "skill_crm_systems",
+                "level": 7
+              },
+              {
+                "name": "skill_english",
+                "level": 6
+              },
+              {
+                "name": "skill_german",
+                "level": 8
+              },
+              {
+                "name": "skill_italian",
+                "level": 4
+              },
+              {
+                "name": "skill_negotiation",
+                "level": 6
+              },
+              {
+                "name": "skill_production_planning",
+                "level": 4
+              },
+              {
+                "name": "skill_progress_admin",
+                "level": 6
+              },
+              {
+                "name": "skill_project_mgmt",
+                "level": 4
+              },
+              {
+                "name": "skill_qms",
+                "level": 7
+              },
+              {
+                "name": "skill_rail",
+                "level": 7
+              },
+              {
+                "name": "skill_solventborne",
+                "level": 7
+              },
+              {
+                "name": "skill_technical_coatings",
+                "level": 6
+              },
+              {
+                "name": "skill_waterborne",
+                "level": 6
+              }
+            ],
+            "wills": [
+              {
+                "name": "will_cross_site",
+                "level": 5
+              },
+              {
+                "name": "will_digitalisation",
+                "level": 6
+              },
+              {
+                "name": "will_mentor_juniors",
+                "level": 6
+              },
+              {
+                "name": "will_people_management",
+                "level": 6
+              },
+              {
+                "name": "will_process_improvement",
+                "level": 5
+              },
+              {
+                "name": "will_travel",
+                "level": 8
+              }
+            ]
+          }
+        },
+        "duration_sec": 0.084
+      }
+    ],
+    "timestamp": 1766475533.462641
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I have Svenja's skills. Now I need to find coaches for each skill where she has room to improve (level < 9). A coach should have at least 2 levels higher. Let me search for potential coaches for her skills:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "find_employees_by_skill",
+        "input": {
+          "skills": [
+            {
+              "name": "skill_corrosion",
+              "min_level": 9
+            },
+            {
+              "name": "skill_crm",
+              "min_level": 9
+            },
+            {
+              "name": "skill_crm_systems",
+              "min_level": 9
+            },
+            {
+              "name": "skill_english",
+              "min_level": 8
+            },
+            {
+              "name": "skill_german",
+              "min_level": 10
+            },
+            {
+              "name": "skill_italian",
+              "min_level": 6
+            },
+            {
+              "name": "skill_negotiation",
+              "min_level": 8
+            },
+            {
+              "name": "skill_production_planning",
+              "min_level": 6
+            },
+            {
+              "name": "skill_progress_admin",
+              "min_level": 8
+            },
+            {
+              "name": "skill_project_mgmt",
+              "min_level": 6
+            },
+            {
+              "name": "skill_qms",
+              "min_level": 9
+            },
+            {
+              "name": "skill_rail",
+              "min_level": 9
+            },
+            {
+              "name": "skill_solventborne",
+              "min_level": 9
+            },
+            {
+              "name": "skill_technical_coatings",
+              "min_level": 8
+            },
+            {
+              "name": "skill_waterborne",
+              "min_level": 8
+            }
+          ],
+          "exclude_employee_id": "FphR_019",
+          "top_n": 50
+        },
+        "output": {
+          "mode": "multi_skill_coaching",
+          "total_coaches": 93,
+          "coaches": [
+            {
+              "employee": {
+                "id": "FphR_002",
+                "name": "Giovanni Rinaldi",
+                "email": "FphR_002@bellini.internal",
+                "salary": 116000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Corporate Leadership",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 10
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 9
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_corrosion",
+                  "level": 10,
+                  "required": 9
+                },
+                {
+                  "skill": "skill_crm",
+                  "level": 10,
+                  "required": 9
+                },
+                {
+                  "skill": "skill_italian",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_qms",
+                  "level": 10,
+                  "required": 9
+                }
+              ],
+              "coaching_skills_count": 5
+            },
+            {
+              "employee": {
+                "id": "FphR_015",
+                "name": "Charlotte Richter",
+                "email": "FphR_015@bellini.internal",
+                "salary": 90000,
+                "notes": "",
+                "location": "Munich Office – Germany",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 4
+            },
+            {
+              "employee": {
+                "id": "FphR_027",
+                "name": "Vera Sanders",
+                "email": "FphR_027@bellini.internal",
+                "salary": 89000,
+                "notes": "",
+                "location": "Rotterdam Office – Netherlands",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 3
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_negotiation",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_technical_coatings",
+                  "level": 8,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 4
+            },
+            {
+              "employee": {
+                "id": "FphR_029",
+                "name": "Celia Pardo",
+                "email": "FphR_029@bellini.internal",
+                "salary": 92000,
+                "notes": "",
+                "location": "Barcelona Office – Spain",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_negotiation",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_technical_coatings",
+                  "level": 8,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 4
+            },
+            {
+              "employee": {
+                "id": "FphR_006",
+                "name": "Irene Venturi",
+                "email": "FphR_006@bellini.internal",
+                "salary": 90000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 7
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 10,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_rail",
+                  "level": 10,
+                  "required": 9
+                },
+                {
+                  "skill": "skill_solventborne",
+                  "level": 10,
+                  "required": 9
+                },
+                {
+                  "skill": "skill_technical_coatings",
+                  "level": 10,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 4
+            },
+            {
+              "employee": {
+                "id": "FphR_004",
+                "name": "Renato Piras",
+                "email": "FphR_004@bellini.internal",
+                "salary": 113000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Corporate Leadership",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 10
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 9
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 10
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 10,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_waterborne",
+                  "level": 10,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 4
+            },
+            {
+              "employee": {
+                "id": "FphR_011",
+                "name": "Tommaso Coppola",
+                "email": "FphR_011@bellini.internal",
+                "salary": 83000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 7
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_progress_admin",
+                  "level": 10,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_technical_coatings",
+                  "level": 8,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 4
+            },
+            {
+              "employee": {
+                "id": "FphR_032",
+                "name": "Hendrik Dietrich",
+                "email": "FphR_032@bellini.internal",
+                "salary": 82000,
+                "notes": "",
+                "location": "Vienna Office – Austria",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_italian",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 3
+            },
+            {
+              "employee": {
+                "id": "FphR_034",
+                "name": "Anna Fischer",
+                "email": "FphR_034@bellini.internal",
+                "salary": 94000,
+                "notes": "",
+                "location": "Vienna Office – Austria",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 3
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_negotiation",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_technical_coatings",
+                  "level": 8,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 3
+            },
+            {
+              "employee": {
+                "id": "FphR_031",
+                "name": "Sara Sánchez",
+                "email": "FphR_031@bellini.internal",
+                "salary": 93000,
+                "notes": "",
+                "location": "Barcelona Office – Spain",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 4
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 7
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 3
+            },
+            {
+              "employee": {
+                "id": "FphR_135",
+                "name": "Carlo Giuliani",
+                "email": "FphR_135@bellini.internal",
+                "salary": 51000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Human Resources (HR)",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 5
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 3
+            },
+            {
+              "employee": {
+                "id": "FphR_012",
+                "name": "Daniela De Santis",
+                "email": "FphR_012@bellini.internal",
+                "salary": 94000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_negotiation",
+                  "level": 10,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 3
+            },
+            {
+              "employee": {
+                "id": "FphR_008",
+                "name": "Marco Bianchi",
+                "email": "FphR_008@bellini.internal",
+                "salary": 95000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 3
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 3
+            },
+            {
+              "employee": {
+                "id": "FphR_007",
+                "name": "Massimo Leone",
+                "email": "FphR_007@bellini.internal",
+                "salary": 87000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 10
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 7
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_german",
+                  "level": 10,
+                  "required": 10
+                },
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 3
+            },
+            {
+              "employee": {
+                "id": "FphR_022",
+                "name": "Élodie François",
+                "email": "FphR_022@bellini.internal",
+                "salary": 94000,
+                "notes": "",
+                "location": "Paris Office – France",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 7
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_technical_coatings",
+                  "level": 8,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 3
+            },
+            {
+              "employee": {
+                "id": "FphR_143",
+                "name": "Claudio Fabbri",
+                "email": "FphR_143@bellini.internal",
+                "salary": 47000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Finance & Administration",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 5
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 3
+            },
+            {
+              "employee": {
+                "id": "FphR_005",
+                "name": "Francesco Galli",
+                "email": "FphR_005@bellini.internal",
+                "salary": 102000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Corporate Leadership",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 7
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 9
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 8,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_075",
+                "name": "Giuseppe Ferrara",
+                "email": "FphR_075@bellini.internal",
+                "salary": 62000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Production – Italy",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 4
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_048",
+                "name": "Giada Bernardi",
+                "email": "FphR_048@bellini.internal",
+                "salary": 48000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "R&D and Technical Service",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 7
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 3
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_112",
+                "name": "Paolo Moretti",
+                "email": "FphR_112@bellini.internal",
+                "salary": 69000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Logistics & Supply Chain",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 3
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_016",
+                "name": "Pascal Heinrich",
+                "email": "FphR_016@bellini.internal",
+                "salary": 83000,
+                "notes": "",
+                "location": "Munich Office – Germany",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 7
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_118",
+                "name": "Vittorio Alfano",
+                "email": "FphR_118@bellini.internal",
+                "salary": 64000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Quality & HSE",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 4
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 5
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_104",
+                "name": "Veljko Nikolić",
+                "email": "FphR_104@bellini.internal",
+                "salary": 53000,
+                "notes": "",
+                "location": "Serbian Plant",
+                "department": "Production – Serbia",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 4
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 4
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_017",
+                "name": "Felix Wagner",
+                "email": "FphR_017@bellini.internal",
+                "salary": 88000,
+                "notes": "",
+                "location": "Munich Office – Germany",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 4
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_negotiation",
+                  "level": 8,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_024",
+                "name": "Vincent Faure",
+                "email": "FphR_024@bellini.internal",
+                "salary": 84000,
+                "notes": "",
+                "location": "Paris Office – France",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 3
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 7
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_066",
+                "name": "Alessia De Luca",
+                "email": "FphR_066@bellini.internal",
+                "salary": 55000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Production – Italy",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 2
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_098",
+                "name": "Danijela Kostić",
+                "email": "FphR_098@bellini.internal",
+                "salary": 69000,
+                "notes": "",
+                "location": "Serbian Plant",
+                "department": "Production – Serbia",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 2
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 3
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_132",
+                "name": "Lorenzo Monti",
+                "email": "FphR_132@bellini.internal",
+                "salary": 64000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "IT & Digital",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 3
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_013",
+                "name": "Camilla Marchetti",
+                "email": "FphR_013@bellini.internal",
+                "salary": 95000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 7
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 7
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_026",
+                "name": "Tess Mulder",
+                "email": "FphR_026@bellini.internal",
+                "salary": 86000,
+                "notes": "",
+                "location": "Rotterdam Office – Netherlands",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_065",
+                "name": "Nicole D’Amico",
+                "email": "FphR_065@bellini.internal",
+                "salary": 50000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Production – Italy",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_067",
+                "name": "Valentina Rinaldi",
+                "email": "FphR_067@bellini.internal",
+                "salary": 46000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Production – Italy",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 2
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 4
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_028",
+                "name": "Martijn van der Wal",
+                "email": "FphR_028@bellini.internal",
+                "salary": 93000,
+                "notes": "",
+                "location": "Rotterdam Office – Netherlands",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_technical_coatings",
+                  "level": 8,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_136",
+                "name": "Silvia Grimaldi",
+                "email": "FphR_136@bellini.internal",
+                "salary": 48000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Human Resources (HR)",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 4
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_062",
+                "name": "Arianna Orlando",
+                "email": "FphR_062@bellini.internal",
+                "salary": 64000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Production – Italy",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 3
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_030",
+                "name": "Aarón Soria",
+                "email": "FphR_030@bellini.internal",
+                "salary": 80000,
+                "notes": "",
+                "location": "Barcelona Office – Spain",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_technical_coatings",
+                  "level": 8,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_025",
+                "name": "Erik Blom",
+                "email": "FphR_025@bellini.internal",
+                "salary": 91000,
+                "notes": "",
+                "location": "Rotterdam Office – Netherlands",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 4
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_technical_coatings",
+                  "level": 8,
+                  "required": 8
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_035",
+                "name": "Isabel Herzog",
+                "email": "FphR_035@bellini.internal",
+                "salary": 83000,
+                "notes": "",
+                "location": "Vienna Office – Austria",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 7
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_128",
+                "name": "Matteo Greco",
+                "email": "FphR_128@bellini.internal",
+                "salary": 65000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "IT & Digital",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 2
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_009",
+                "name": "Alessandra Pagano",
+                "email": "FphR_009@bellini.internal",
+                "salary": 89000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 3
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 7
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_076",
+                "name": "Chiara Conti",
+                "email": "FphR_076@bellini.internal",
+                "salary": 67000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Production – Italy",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 6
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 5
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_077",
+                "name": "Simona Benedetti",
+                "email": "FphR_077@bellini.internal",
+                "salary": 57000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Production – Italy",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 2
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 2
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_100",
+                "name": "Nikola Petrović",
+                "email": "FphR_100@bellini.internal",
+                "salary": 69000,
+                "notes": "",
+                "location": "Serbian Plant",
+                "department": "Production – Serbia",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 2
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 2
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_001",
+                "name": "Nino Valente",
+                "email": "FphR_001@bellini.internal",
+                "salary": 105000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Corporate Leadership",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 10
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 4
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 10
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 10
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 10,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 10,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_018",
+                "name": "Martin Herzog",
+                "email": "FphR_018@bellini.internal",
+                "salary": 88000,
+                "notes": "",
+                "location": "Munich Office – Germany",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 4
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 8
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_english",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_068",
+                "name": "Pietro Riva",
+                "email": "FphR_068@bellini.internal",
+                "salary": 52000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Production – Italy",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 6
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_121",
+                "name": "Lucia Monti",
+                "email": "FphR_121@bellini.internal",
+                "salary": 69000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "Quality & HSE",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 2
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_project_mgmt",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_103",
+                "name": "Dunja Gavrilović",
+                "email": "FphR_103@bellini.internal",
+                "salary": 72000,
+                "notes": "",
+                "location": "Serbian Plant",
+                "department": "Production – Serbia",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 2
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 4
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 4
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_023",
+                "name": "Alice Rolland",
+                "email": "FphR_023@bellini.internal",
+                "salary": 85000,
+                "notes": "",
+                "location": "Paris Office – France",
+                "department": "Sales & Customer Success",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 8
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 3
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 7
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 5
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 7
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 3
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 8
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_negotiation",
+                  "level": 8,
+                  "required": 8
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 7,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            },
+            {
+              "employee": {
+                "id": "FphR_036",
+                "name": "Davide De Luca",
+                "email": "FphR_036@bellini.internal",
+                "salary": 56000,
+                "notes": "",
+                "location": "HQ – Italy",
+                "department": "R&D and Technical Service",
+                "skills": [
+                  {
+                    "name": "skill_corrosion",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_crm_systems",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_english",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_german",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_italian",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_negotiation",
+                    "level": 2
+                  },
+                  {
+                    "name": "skill_production_planning",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_progress_admin",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_project_mgmt",
+                    "level": 5
+                  },
+                  {
+                    "name": "skill_qms",
+                    "level": 4
+                  },
+                  {
+                    "name": "skill_rail",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_solventborne",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_technical_coatings",
+                    "level": 6
+                  },
+                  {
+                    "name": "skill_waterborne",
+                    "level": 7
+                  }
+                ],
+                "wills": [
+                  {
+                    "name": "will_cross_site",
+                    "level": 2
+                  },
+                  {
+                    "name": "will_digitalisation",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_mentor_juniors",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_people_management",
+                    "level": 6
+                  },
+                  {
+                    "name": "will_process_improvement",
+                    "level": 5
+                  },
+                  {
+                    "name": "will_travel",
+                    "level": 2
+                  }
+                ]
+              },
+              "can_coach_on": [
+                {
+                  "skill": "skill_italian",
+                  "level": 6,
+                  "required": 6
+                },
+                {
+                  "skill": "skill_production_planning",
+                  "level": 6,
+                  "required": 6
+                }
+              ],
+              "coaching_skills_count": 2
+            }
+          ]
+        },
+        "duration_sec": 5.462
+      }
+    ],
+    "timestamp": 1766475572.313731
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [
+      "I have a comprehensive list of potential coaches for Svenja Adler. Let me now compile this into a clear response. Note: Svenja is female (\"her\" not \"his\"), so I'll correct the pronoun in my response."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Here is a list of employees who can coach **Svenja Adler** on her skills (coaches must have at least 2 levels higher than Svenja in a skill).\n\n**Top Coaches (by number of skills they can coach):**\n\n| Employee | Location | Skills They Can Coach Svenja On |\n|----------|----------|--------------------------------|\n| **Giovanni Rinaldi** | HQ – Italy | skill_corrosion (10), skill_crm (10), skill_italian (7), skill_project_mgmt (7), skill_qms (10) — **5 skills** |\n| **Charlotte Richter** | Munich Office – Germany | skill_english (8), skill_italian (6), skill_production_planning (6), skill_project_mgmt (7) — **4 skills** |\n| **Vera Sanders** | Rotterdam Office – Netherlands | skill_negotiation (8), skill_production_planning (6), skill_project_mgmt (6), skill_technical_coatings (8) — **4 skills** |\n| **Celia Pardo** | Barcelona Office – Spain | skill_english (8), skill_negotiation (8), skill_production_planning (7), skill_technical_coatings (8) — **4 skills** |\n| **Irene Venturi** | HQ – Italy | skill_english (10), skill_rail (10), skill_solventborne (10), skill_technical_coatings (10) — **4 skills** |\n| **Renato Piras** | HQ – Italy | skill_italian (7), skill_production_planning (10), skill_project_mgmt (7), skill_waterborne (10) — **4 skills** |\n| **Tommaso Coppola** | HQ – Italy | skill_english (8), skill_progress_admin (10), skill_project_mgmt (6), skill_technical_coatings (8) — **4 skills** |\n\n**Svenja's Current Skill Levels for Reference:**\n- skill_corrosion: 7, skill_crm: 7, skill_crm_systems: 7, skill_english: 6, skill_german: 8\n- skill_italian: 4, skill_negotiation: 6, skill_production_planning: 4, skill_progress_admin: 6\n- skill_project_mgmt: 4, skill_qms: 7, skill_rail: 7, skill_solventborne: 7\n- skill_technical_coatings: 6, skill_waterborne: 6\n\n**Total coaches found:** 93 employees across the company can coach Svenja on at least one skill. The top candidates listed above can cover the most skills for a comprehensive development program.\n\n**Recommendation:** For maximum impact, consider **Irene Venturi** (same department, can coach on 4 technical skills to exceptional levels) or **Charlotte Richter** (same Munich Office, 4 skills including project management).",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "FphR_019"
+            },
+            {
+              "kind": "employee",
+              "id": "FphR_002"
+            },
+            {
+              "kind": "employee",
+              "id": "FphR_015"
+            },
+            {
+              "kind": "employee",
+              "id": "FphR_027"
+            },
+            {
+              "kind": "employee",
+              "id": "FphR_029"
+            },
+            {
+              "kind": "employee",
+              "id": "FphR_006"
+            },
+            {
+              "kind": "employee",
+              "id": "FphR_004"
+            },
+            {
+              "kind": "employee",
+              "id": "FphR_011"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.243
+      }
+    ],
+    "timestamp": 1766475593.592072
+  },
+  {
+    "type": "task_end",
+    "score": 0.0,
+    "summary": "ok_answer: Here is a list of employees who can coach **Svenja Adler** on her skills (coaches must have at least",
+    "eval_logs": "FAIL: found unexpected employee link to 'FphR_019'",
+    "timestamp": 1766475593.68413
+  }
+]

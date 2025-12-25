@@ -1,0 +1,146 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t099",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Michele Parisi log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v099",
+    "timestamp": 1766513502.170805
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "QR23_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.296
+      }
+    ],
+    "timestamp": 1766513505.31282
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Michele Parisi",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "QR23_114",
+              "name": "Michele Parisi",
+              "email": "QR23_114@bellini.internal",
+              "salary": 72000,
+              "location": "HQ – Italy",
+              "department": "Logistics & Supply Chain"
+            }
+          ]
+        },
+        "duration_sec": 0.086
+      }
+    ],
+    "timestamp": 1766513510.0508711
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "Now I have Michele Parisi's ID (QR23_114). Let me get the time summary for February 2025, broken down by billable and non-billable hours."
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "QR23_114"
+          ],
+          "billable": "billable"
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "QR23_114",
+              "total_hours": 7.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 0
+            }
+          ]
+        },
+        "duration_sec": 0.266
+      },
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "QR23_114"
+          ],
+          "billable": "non_billable"
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "QR23_114",
+              "total_hours": 2,
+              "billable_hours": 0,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.088
+      }
+    ],
+    "timestamp": 1766513515.808966
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I now have the complete breakdown for Michele Parisi's time in February 2025."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Michele Parisi logged a total of **9.5 hours**:\n\n- **Billable hours:** 7.5\n- **Non-billable hours:** 2",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "QR23_114"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.104
+      }
+    ],
+    "timestamp": 1766513520.912213
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Michele Parisi logged a total of **9.5 hours**:\n\n- **Billable hou",
+    "eval_logs": "",
+    "timestamp": 1766513521.006995
+  }
+]

@@ -1,0 +1,247 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t101",
+    "task_text": "I accidentally logged 8 hours on Workshop coating standards and training on 2025-05-10, but I only worked 6. Please void that time entry and create new copy with 8 hours.",
+    "config_version": "v090",
+    "timestamp": 1766482008.700096
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "iv5n_125",
+          "is_public": false,
+          "location": "Serbian Plant",
+          "department": "Quality & HSE",
+          "today": "2025-05-20",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.136
+      }
+    ],
+    "timestamp": 1766482011.5044212
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "Workshop coating standards and training",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": [
+            {
+              "id": "proj_balkanmetal_workshop_standards",
+              "name": "Workshop coating standards and training",
+              "customer": "cust_balkanmetal_fabrication",
+              "status": "active"
+            }
+          ],
+          "next_offset": -1
+        },
+        "duration_sec": 0.044
+      }
+    ],
+    "timestamp": 1766482014.6037068
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "Now let me search for the time entry on that project for May 10, 2025:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_search",
+        "input": {
+          "employee": "iv5n_125",
+          "project": "proj_balkanmetal_workshop_standards",
+          "date_from": "2025-05-10",
+          "date_to": "2025-05-10",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "entries": [
+            {
+              "id": "te_050",
+              "employee": "iv5n_125",
+              "customer": "cust_balkanmetal_fabrication",
+              "project": "proj_balkanmetal_workshop_standards",
+              "date": "2025-05-10",
+              "hours": 8,
+              "work_category": "customer_project",
+              "notes": "Initial entry with incorrect hours",
+              "billable": true,
+              "status": "submitted"
+            }
+          ],
+          "next_offset": -1,
+          "total_hours": 8,
+          "total_billable": 8,
+          "total_non_billable": 0
+        },
+        "duration_sec": 0.049
+      }
+    ],
+    "timestamp": 1766482019.5692968
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I found the time entry. Now I'll void it and create a new one with 8 hours as requested:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_update",
+        "input": {
+          "id": "te_050",
+          "status": "voided"
+        },
+        "output": {
+          "error": "'ToolExecutor' object has no attribute 'current_user'"
+        },
+        "duration_sec": 0.147
+      },
+      {
+        "tool": "time_log",
+        "input": {
+          "employee": "iv5n_125",
+          "project": "proj_balkanmetal_workshop_standards",
+          "date": "2025-05-10",
+          "hours": 8,
+          "billable": true,
+          "work_category": "customer_project",
+          "status": "draft"
+        },
+        "output": {
+          "id": "te_051",
+          "employee": "iv5n_125",
+          "customer": "",
+          "project": "proj_balkanmetal_workshop_standards",
+          "date": "2025-05-10",
+          "hours": 8,
+          "work_category": "customer_project",
+          "notes": "",
+          "billable": true,
+          "status": "draft"
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766482025.867549
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [
+      "There was an error voiding the original entry, but the new entry was created. Let me retry voiding the original:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_update",
+        "input": {
+          "id": "te_050",
+          "status": "voided"
+        },
+        "output": {
+          "error": "'ToolExecutor' object has no attribute 'current_user'"
+        },
+        "duration_sec": 0.1
+      }
+    ],
+    "timestamp": 1766482029.871953
+  },
+  {
+    "type": "llm_turn",
+    "turn": 6,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_update",
+        "input": {
+          "id": "te_050",
+          "status": "voided",
+          "date": "2025-05-10",
+          "hours": 8,
+          "billable": true,
+          "work_category": "customer_project"
+        },
+        "output": {
+          "error": "'ToolExecutor' object has no attribute 'current_user'"
+        },
+        "duration_sec": 0.138
+      }
+    ],
+    "timestamp": 1766482035.292911
+  },
+  {
+    "type": "llm_turn",
+    "turn": 7,
+    "text_blocks": [
+      "There appears to be a system error preventing the voiding of the original time entry. Let me check the time entry directly:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_get",
+        "input": {
+          "id": "te_050"
+        },
+        "output": {
+          "entry": {
+            "employee": "iv5n_125",
+            "customer": "cust_balkanmetal_fabrication",
+            "project": "proj_balkanmetal_workshop_standards",
+            "date": "2025-05-10",
+            "hours": 8,
+            "work_category": "customer_project",
+            "notes": "Initial entry with incorrect hours",
+            "billable": true,
+            "status": "submitted"
+          }
+        },
+        "duration_sec": 0.045
+      }
+    ],
+    "timestamp": 1766482038.840065
+  },
+  {
+    "type": "llm_turn",
+    "turn": 8,
+    "text_blocks": [
+      "The system is experiencing an internal error when trying to void the time entry. I've already created the new entry with 8 hours, but I was unable to void the original due to a system error."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "I encountered a system error while trying to complete this task. \n\nI was able to:\n✓ Create a new time entry (te_051) with 8 hours for 2025-05-10 on the \"Workshop coating standards and training\" project\n\nHowever, I was unable to:\n✗ Void the original time entry (te_050) - the system returned an internal error\n\nPlease note: You mentioned you only worked 6 hours, but asked me to create the new entry with 8 hours. The new entry has been created with 8 hours as you requested. If you meant to create it with 6 hours instead, please let me know and I can help correct that.\n\nYou may need to contact IT support to void the original entry (te_050), or try again later.",
+          "outcome": "error_internal",
+          "links": []
+        },
+        "output": {},
+        "duration_sec": 0.135
+      }
+    ],
+    "timestamp": 1766482050.076493
+  },
+  {
+    "type": "task_end",
+    "score": 0.0,
+    "summary": "error_internal: I encountered a system error while trying to complete this task. \n\nI was able to:\n✓ Create a new tim",
+    "eval_logs": "FAIL: expected outcome 'ok_answer', got 'error_internal'",
+    "timestamp": 1766482050.129399
+  }
+]

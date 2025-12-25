@@ -1,0 +1,235 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t101",
+    "task_text": "I accidentally logged 8 hours on HR – skills & wills data cleanup on 2025-05-10, but I only worked 6. Please void that time entry and create new copy with 8 hours.",
+    "config_version": "v099",
+    "timestamp": 1766513517.298103
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "iv5n_002",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Corporate Leadership",
+          "today": "2025-05-20",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.315
+      }
+    ],
+    "timestamp": 1766513520.802639
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_search",
+        "input": {
+          "employee": "iv5n_002",
+          "date_from": "2025-05-10",
+          "date_to": "2025-05-10",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "entries": [
+            {
+              "id": "te_050",
+              "employee": "iv5n_002",
+              "customer": "cust_bellini_internal",
+              "project": "proj_hr_skills_wills_cleanup_bellini",
+              "date": "2025-05-10",
+              "hours": 8,
+              "work_category": "customer_project",
+              "notes": "Initial entry with incorrect hours",
+              "billable": true,
+              "status": "submitted"
+            }
+          ],
+          "next_offset": -1,
+          "total_hours": 8,
+          "total_billable": 8,
+          "total_non_billable": 0
+        },
+        "duration_sec": 0.089
+      },
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "HR skills wills data cleanup",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": null,
+          "next_offset": -1
+        },
+        "duration_sec": 0.107
+      }
+    ],
+    "timestamp": 1766513524.757098
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "I found the time entry. Let me search for the project by a different query to get the project details."
+    ],
+    "tool_calls": [
+      {
+        "tool": "projects_get",
+        "input": {
+          "id": "proj_hr_skills_wills_cleanup_bellini"
+        },
+        "output": {
+          "project": {
+            "id": "proj_hr_skills_wills_cleanup_bellini",
+            "name": "HR – skills & wills data cleanup",
+            "description": "Internal project to clean up and harmonise skills and wills data across the employee registry.",
+            "customer": "cust_bellini_internal",
+            "status": "active",
+            "team": [
+              {
+                "employee": "iv5n_133",
+                "time_slice": 0.5,
+                "role": "Lead"
+              },
+              {
+                "employee": "iv5n_130",
+                "time_slice": 0.3,
+                "role": "Engineer"
+              },
+              {
+                "employee": "iv5n_002",
+                "time_slice": 0.2,
+                "role": "Other"
+              }
+            ]
+          },
+          "found": true
+        },
+        "duration_sec": 0.096
+      }
+    ],
+    "timestamp": 1766513528.9011772
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I found the time entry (te_050) for 8 hours on 2025-05-10. Now I need to:\n1. Void the existing entry\n2. Create a new entry with 8 hours (as you requested - though you mentioned you only worked 6 hours, you asked for a new copy with 8 hours)\n\nWait, let me re-read your request. You said you \"only worked 6\" but asked to \"create new copy with 8 hours.\" This seems contradictory. However, I'll follow your explicit instruction to create the new entry with 8 hours."
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_update",
+        "input": {
+          "id": "te_050",
+          "status": "voided"
+        },
+        "output": {},
+        "duration_sec": 0.481
+      }
+    ],
+    "timestamp": 1766513535.246826
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_log",
+        "input": {
+          "employee": "iv5n_002",
+          "project": "proj_hr_skills_wills_cleanup_bellini",
+          "date": "2025-05-10",
+          "hours": 8,
+          "billable": true,
+          "work_category": "customer_project",
+          "status": "draft",
+          "customer": "cust_bellini_internal"
+        },
+        "output": {
+          "error": "Client error '404 Not Found' for url 'https://erc.timetoact-group.at/erc3-dev/tsk-42agSF8gJXpANBPfWnNhpV/time/log'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+        },
+        "duration_sec": 0.082
+      }
+    ],
+    "timestamp": 1766513539.871119
+  },
+  {
+    "type": "llm_turn",
+    "turn": 6,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_log",
+        "input": {
+          "employee": "iv5n_002",
+          "project": "proj_hr_skills_wills_cleanup_bellini",
+          "date": "2025-05-10",
+          "hours": 8,
+          "billable": true,
+          "work_category": "customer_project",
+          "status": "draft"
+        },
+        "output": {
+          "id": "te_051",
+          "employee": "iv5n_002",
+          "customer": "",
+          "project": "proj_hr_skills_wills_cleanup_bellini",
+          "date": "2025-05-10",
+          "hours": 8,
+          "work_category": "customer_project",
+          "notes": "",
+          "billable": true,
+          "status": "draft"
+        },
+        "duration_sec": 0.079
+      }
+    ],
+    "timestamp": 1766513544.678594
+  },
+  {
+    "type": "llm_turn",
+    "turn": 7,
+    "text_blocks": [
+      "I've completed the task. However, I want to clarify something: you mentioned you \"only worked 6\" hours but asked me to create a new entry with \"8 hours\". I followed your explicit instruction and created the new entry with 8 hours. If you actually wanted 6 hours (to correct the original error), please let me know and I can void this new entry and create one with 6 hours instead."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Done! I've processed your time entry correction:\n\n1. **Voided** the original entry (te_050) for 8 hours on 2025-05-10\n2. **Created** new entry (te_051) for 8 hours on 2025-05-10 on project \"HR – skills & wills data cleanup\" (status: draft)\n\n**Note:** You mentioned you only worked 6 hours, but requested the new entry with 8 hours. If you actually meant to correct it to 6 hours, please let me know and I'll fix it.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "project",
+              "id": "proj_hr_skills_wills_cleanup_bellini"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.264
+      }
+    ],
+    "timestamp": 1766513552.591435
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Done! I've processed your time entry correction:\n\n1. **Voided** the original entry (te_050) for 8 ho",
+    "eval_logs": "",
+    "timestamp": 1766513552.689258
+  }
+]

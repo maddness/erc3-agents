@@ -1,0 +1,119 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t099",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Ana Ilić log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v100",
+    "timestamp": 1766517503.8519318
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "QR23_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.143
+      }
+    ],
+    "timestamp": 1766517506.4991791
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Ana Ilić",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "QR23_094",
+              "name": "Ana Ilić",
+              "email": "QR23_094@bellini.internal",
+              "salary": 53000,
+              "location": "Serbian Plant",
+              "department": "Production – Serbia"
+            }
+          ]
+        },
+        "duration_sec": 0.049
+      }
+    ],
+    "timestamp": 1766517508.87801
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "QR23_094"
+          ]
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "QR23_094",
+              "total_hours": 9.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.048
+      }
+    ],
+    "timestamp": 1766517512.704812
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Ana Ilić logged a total of 9.5 hours:\n- **Billable hours:** 7.5\n- **Non-billable hours:** 2.0",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "QR23_094"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.137
+      }
+    ],
+    "timestamp": 1766517517.96574
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Ana Ilić logged a total of 9.5 hours:\n- **Billable hours:** 7.5\n-",
+    "eval_logs": "",
+    "timestamp": 1766517518.0194829
+  }
+]

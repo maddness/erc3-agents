@@ -1,0 +1,123 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t099",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Koos Brands log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v102",
+    "timestamp": 1766532500.182344
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "QR23_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.137
+      }
+    ],
+    "timestamp": 1766532501.98267
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Koos Brands",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "QR23_025",
+              "name": "Koos Brands",
+              "email": "QR23_025@bellini.internal",
+              "salary": 89000,
+              "location": "Rotterdam Office – Netherlands",
+              "department": "Sales & Customer Success"
+            }
+          ]
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766532504.608244
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "Now I have the employee ID for Koos Brands. Let me use the time summary by employee function to get the aggregated hours for the date range."
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "QR23_025"
+          ]
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "QR23_025",
+              "total_hours": 9.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766532508.069001
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I have all the information needed to respond."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Koos Brands logged a total of 9.5 hours:\n- Billable hours: 7.5\n- Non-billable hours: 2.0",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "QR23_025"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.045
+      }
+    ],
+    "timestamp": 1766532512.180681
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Koos Brands logged a total of 9.5 hours:\n- Billable hours: 7.5\n- ",
+    "eval_logs": "",
+    "timestamp": 1766532512.2382631
+  }
+]

@@ -1,0 +1,163 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t100",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Laura Pellegrini log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v099",
+    "timestamp": 1766513511.012168
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "Bhwa_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.272
+      }
+    ],
+    "timestamp": 1766513514.17539
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Laura Pellegrini",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "Bhwa_114",
+              "name": "Laura Pellegrini",
+              "email": "Bhwa_114@bellini.internal",
+              "salary": 60000,
+              "location": "HQ – Italy",
+              "department": "Logistics & Supply Chain"
+            }
+          ]
+        },
+        "duration_sec": 0.08
+      }
+    ],
+    "timestamp": 1766513518.26418
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "Bhwa_114"
+          ]
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "Bhwa_114",
+              "total_hours": 9.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.28
+      },
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "Bhwa_114"
+          ],
+          "billable": "billable"
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "Bhwa_114",
+              "total_hours": 7.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 0
+            }
+          ]
+        },
+        "duration_sec": 0.077
+      },
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "Bhwa_114"
+          ],
+          "billable": "non_billable"
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "Bhwa_114",
+              "total_hours": 2,
+              "billable_hours": 0,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.083
+      }
+    ],
+    "timestamp": 1766513524.045474
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Laura Pellegrini logged a total of **9.5 hours**:\n- **Billable hours:** 7.5\n- **Non-billable hours:** 2.0",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "Bhwa_114"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.288
+      }
+    ],
+    "timestamp": 1766513530.18651
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Laura Pellegrini logged a total of **9.5 hours**:\n- **Billable ho",
+    "eval_logs": "",
+    "timestamp": 1766513530.27777
+  }
+]

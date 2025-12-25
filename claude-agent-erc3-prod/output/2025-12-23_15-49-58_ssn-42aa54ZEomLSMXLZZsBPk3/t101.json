@@ -1,0 +1,176 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t101",
+    "task_text": "I accidentally logged 8 hours on High-temperature coating for presses on 2025-05-10, but I only worked 6. Please void that time entry and create new copy with 8 hours.",
+    "config_version": "v093",
+    "timestamp": 1766494454.9840791
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "iv5n_049",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "R&D and Technical Service",
+          "today": "2025-05-20",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.133
+      }
+    ],
+    "timestamp": 1766494458.157745
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "High-temperature coating for presses",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": [
+            {
+              "id": "proj_machina_press_high_temp",
+              "name": "High-temperature coating for presses",
+              "customer": "cust_machina_press",
+              "status": "active"
+            }
+          ],
+          "next_offset": -1
+        },
+        "duration_sec": 0.044
+      }
+    ],
+    "timestamp": 1766494461.0996659
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_search",
+        "input": {
+          "employee": "iv5n_049",
+          "project": "proj_machina_press_high_temp",
+          "date_from": "2025-05-10",
+          "date_to": "2025-05-10",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "entries": [
+            {
+              "id": "te_050",
+              "employee": "iv5n_049",
+              "customer": "cust_machina_press",
+              "project": "proj_machina_press_high_temp",
+              "date": "2025-05-10",
+              "hours": 8,
+              "work_category": "customer_project",
+              "notes": "Initial entry with incorrect hours",
+              "billable": true,
+              "status": "submitted"
+            }
+          ],
+          "next_offset": -1,
+          "total_hours": 8,
+          "total_billable": 8,
+          "total_non_billable": 0
+        },
+        "duration_sec": 0.043
+      }
+    ],
+    "timestamp": 1766494465.529214
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I found the time entry. Now I'll void it and create a new one with 8 hours as you requested."
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_update",
+        "input": {
+          "id": "te_050",
+          "status": "voided"
+        },
+        "output": {},
+        "duration_sec": 0.14
+      },
+      {
+        "tool": "time_log",
+        "input": {
+          "employee": "iv5n_049",
+          "project": "proj_machina_press_high_temp",
+          "date": "2025-05-10",
+          "hours": 8,
+          "billable": true,
+          "work_category": "customer_project",
+          "status": "draft"
+        },
+        "output": {
+          "id": "te_051",
+          "employee": "iv5n_049",
+          "customer": "",
+          "project": "proj_machina_press_high_temp",
+          "date": "2025-05-10",
+          "hours": 8,
+          "work_category": "customer_project",
+          "notes": "",
+          "billable": true,
+          "status": "draft"
+        },
+        "duration_sec": 0.049
+      }
+    ],
+    "timestamp": 1766494470.302689
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Done! I've voided the original 8-hour time entry (te_050) from 2025-05-10 on the High-temperature coating for presses project and created a new entry (te_051) with 8 hours as you requested.\n\nNote: You mentioned you only worked 6 hours but asked me to create the new entry with 8 hours. The new entry has been created with 8 hours as instructed. If you meant to correct it to 6 hours, please let me know and I can update it.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "project",
+              "id": "proj_machina_press_high_temp"
+            },
+            {
+              "kind": "customer",
+              "id": "cust_machina_press"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.139
+      }
+    ],
+    "timestamp": 1766494478.808535
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Done! I've voided the original 8-hour time entry (te_050) from 2025-05-10 on the High-temperature co",
+    "eval_logs": "",
+    "timestamp": 1766494478.861016
+  }
+]

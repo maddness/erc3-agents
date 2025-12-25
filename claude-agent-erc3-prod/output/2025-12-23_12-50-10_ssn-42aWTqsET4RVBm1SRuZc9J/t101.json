@@ -1,0 +1,172 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t101",
+    "task_text": "I accidentally logged 8 hours on Operations – Serbia debottlenecking initiative on 2025-05-10, but I only worked 6. Please void that time entry and create new copy with 8 hours.",
+    "config_version": "v090",
+    "timestamp": 1766483787.622723
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "iv5n_100",
+          "is_public": false,
+          "location": "Serbian Plant",
+          "department": "Production – Serbia",
+          "today": "2025-05-20",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.176
+      }
+    ],
+    "timestamp": 1766483797.47026
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "Serbia debottlenecking",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": [
+            {
+              "id": "proj_ops_serbia_debottlenecking_bellini",
+              "name": "Operations – Serbia debottlenecking initiative",
+              "customer": "cust_bellini_internal",
+              "status": "active"
+            }
+          ],
+          "next_offset": -1
+        },
+        "duration_sec": 0.045
+      }
+    ],
+    "timestamp": 1766483799.911746
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_search",
+        "input": {
+          "employee": "iv5n_100",
+          "project": "proj_ops_serbia_debottlenecking_bellini",
+          "date_from": "2025-05-10",
+          "date_to": "2025-05-10",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "entries": [
+            {
+              "id": "te_050",
+              "employee": "iv5n_100",
+              "customer": "cust_bellini_internal",
+              "project": "proj_ops_serbia_debottlenecking_bellini",
+              "date": "2025-05-10",
+              "hours": 8,
+              "work_category": "customer_project",
+              "notes": "Initial entry with incorrect hours",
+              "billable": true,
+              "status": "submitted"
+            }
+          ],
+          "next_offset": -1,
+          "total_hours": 8,
+          "total_billable": 8,
+          "total_non_billable": 0
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766483804.3354309
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I found the time entry. Now I'll void it and create a new entry with 8 hours as you requested."
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_update",
+        "input": {
+          "id": "te_050",
+          "status": "voided"
+        },
+        "output": {},
+        "duration_sec": 0.229
+      },
+      {
+        "tool": "time_log",
+        "input": {
+          "employee": "iv5n_100",
+          "project": "proj_ops_serbia_debottlenecking_bellini",
+          "date": "2025-05-10",
+          "hours": 8,
+          "billable": true,
+          "work_category": "customer_project",
+          "status": "draft"
+        },
+        "output": {
+          "id": "te_051",
+          "employee": "iv5n_100",
+          "customer": "",
+          "project": "proj_ops_serbia_debottlenecking_bellini",
+          "date": "2025-05-10",
+          "hours": 8,
+          "work_category": "customer_project",
+          "notes": "",
+          "billable": true,
+          "status": "draft"
+        },
+        "duration_sec": 0.045
+      }
+    ],
+    "timestamp": 1766483810.9560902
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Done! I've voided the original time entry (te_050) and created a new entry (te_051) with 8 hours on Operations – Serbia debottlenecking initiative for 2025-05-10. The new entry is in draft status.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "project",
+              "id": "proj_ops_serbia_debottlenecking_bellini"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.132
+      }
+    ],
+    "timestamp": 1766483828.7228868
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Done! I've voided the original time entry (te_050) and created a new entry (te_051) with 8 hours on ",
+    "eval_logs": "",
+    "timestamp": 1766483828.775956
+  }
+]

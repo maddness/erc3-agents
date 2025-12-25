@@ -1,0 +1,115 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t044",
+    "task_text": "What is the salary and department of Puglisi Mario?",
+    "config_version": "v090",
+    "timestamp": 1766483563.1448262
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "QR23_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-01-22",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.135
+      }
+    ],
+    "timestamp": 1766483566.296885
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Puglisi Mario",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": null
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766483568.583783
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "Let me try with the name in a different order:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Mario Puglisi",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "QR23_060",
+              "name": "Mario Puglisi",
+              "email": "QR23_060@bellini.internal",
+              "salary": 75000,
+              "location": "HQ – Italy",
+              "department": "Production – Italy"
+            }
+          ]
+        },
+        "duration_sec": 0.049
+      }
+    ],
+    "timestamp": 1766483572.1630468
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I found the employee. Let me provide the information."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Mario Puglisi has a salary of 75000 and works in the Production – Italy department.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "QR23_060"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.141
+      }
+    ],
+    "timestamp": 1766483577.6369169
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Mario Puglisi has a salary of 75000 and works in the Production – Italy department.",
+    "eval_logs": "",
+    "timestamp": 1766483577.69557
+  }
+]

@@ -1,0 +1,157 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t098",
+    "task_text": "Between 2025-03-01 and 2025-03-31, how many hours in total did we log on project High-temperature coating for presses? Please also break it down into billable and non‑billable hours.",
+    "config_version": "v103",
+    "timestamp": 1766535186.353463
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "BwFV_139",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Finance & Administration",
+          "today": "2025-04-10",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.145
+      }
+    ],
+    "timestamp": 1766535189.386322
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "High-temperature coating for presses",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": [
+            {
+              "id": "proj_machina_press_high_temp",
+              "name": "High-temperature coating for presses",
+              "customer": "cust_machina_press",
+              "status": "active"
+            }
+          ],
+          "next_offset": -1
+        },
+        "duration_sec": 0.048
+      }
+    ],
+    "timestamp": 1766535192.436569
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_get",
+        "input": {
+          "id": "proj_machina_press_high_temp"
+        },
+        "output": {
+          "project": {
+            "id": "proj_machina_press_high_temp",
+            "name": "High-temperature coating for presses",
+            "description": "High-temperature resistant coating system for industrial presses and conveyors.",
+            "customer": "cust_machina_press",
+            "status": "active",
+            "team": [
+              {
+                "employee": "BwFV_046",
+                "time_slice": 0.4,
+                "role": "Lead"
+              },
+              {
+                "employee": "BwFV_019",
+                "time_slice": 0.2,
+                "role": "Engineer"
+              },
+              {
+                "employee": "BwFV_056",
+                "time_slice": 0.3,
+                "role": "Ops"
+              }
+            ]
+          },
+          "found": true
+        },
+        "duration_sec": 0.05
+      },
+      {
+        "tool": "time_summary_by_project",
+        "input": {
+          "projects": [
+            "proj_machina_press_high_temp"
+          ],
+          "date_from": "2025-03-01",
+          "date_to": "2025-03-31"
+        },
+        "output": {
+          "summaries": [
+            {
+              "customer": "cust_machina_press",
+              "project": "proj_machina_press_high_temp",
+              "total_hours": 6.5,
+              "billable_hours": 4,
+              "non_billable_hours": 2.5,
+              "distinct_employees": 1
+            }
+          ]
+        },
+        "duration_sec": 0.055
+      }
+    ],
+    "timestamp": 1766535196.0013251
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-03-01 and 2025-03-31, the total hours logged on project \"High-temperature coating for presses\" were:\n\n- **Total hours:** 6.5\n- **Billable hours:** 4\n- **Non-billable hours:** 2.5\n\nThis time was logged by 1 employee during the period.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "project",
+              "id": "proj_machina_press_high_temp"
+            },
+            {
+              "kind": "customer",
+              "id": "cust_machina_press"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.049
+      }
+    ],
+    "timestamp": 1766535200.355882
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-03-01 and 2025-03-31, the total hours logged on project \"High-temperature coating for p",
+    "eval_logs": "",
+    "timestamp": 1766535200.415575
+  }
+]

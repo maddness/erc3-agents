@@ -1,0 +1,148 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t060",
+    "task_text": "In plain language, explain how deal phases work in our CRM and when a customer moves from 'exploring' to 'active'. Put that to draft_deal_workflow.md for me.",
+    "config_version": "v103",
+    "timestamp": 1766534818.232078
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "BwFV_001",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Corporate Leadership",
+          "today": "2025-01-14",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.135
+      }
+    ],
+    "timestamp": 1766534821.214187
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "wiki_search",
+        "input": {
+          "query_regex": "deal.*(phase|workflow|stage)|CRM.*(phase|workflow)|exploring.*active"
+        },
+        "output": {
+          "results": [
+            {
+              "content": "5. **Offer & negotiation**\n   - Pricing, volume commitments and service levels are negotiated.\n   - CRM and project registry track phase changes and expected volumes.\n\n6. **Implementation & support**",
+              "linum": 59,
+              "path": "business/marketing_and_sales_approach.md"
+            },
+            {
+              "content": "- High‑level status of opportunities.\n\nAccount managers are expected to keep **deal phases** and **briefs** reasonably up to date, and to link projects correctly to customers. This is essential for meaningful reports and for the chatbot to give accurate answers.\n",
+              "linum": 95,
+              "path": "business/marketing_and_sales_approach.md"
+            },
+            {
+              "content": "- Assigned account manager (employee ID)\n- Short descriptive **brief**\n- Current overall **deal phase**\n- High‑level status (e.g. “Key account”, “Curious but cautious”, “Dormant”)\n",
+              "linum": 16,
+              "path": "systems/crm.md"
+            },
+            {
+              "content": "For each **opportunity / relationship** (at company level):\n\n- The **deal phase**:\n  - `idea` – new lead, early conversation.\n  - `exploring` – deeper exploration, early trials.",
+              "linum": 21,
+              "path": "systems/crm.md"
+            },
+            {
+              "content": "\n- **Sales & Customer Success**\n  - Primary owners of customer records and deal phases.\n- **Customer Service**\n  - Updates contact details and practical information.",
+              "linum": 32,
+              "path": "systems/crm.md"
+            }
+          ]
+        },
+        "duration_sec": 0.051
+      }
+    ],
+    "timestamp": 1766534824.123179
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "I found relevant information in the CRM documentation. Let me load the full CRM wiki page to get complete details about deal phases."
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_load",
+        "input": {
+          "file": "systems/crm.md"
+        },
+        "output": {
+          "file": "systems/crm.md",
+          "content": "# CRM – Customer & Deal Tracking\n\nThe **CRM (Customer Relationship Management)** system is the central repository for **customer master data** and **high‑level opportunity tracking**.\n\n## What is stored in the CRM?\n\nFor each **customer company**:\n\n- Customer ID (internal)\n- Name and legal form\n- Main address and country\n- Industry segment (e.g. Rail, Food & Beverage, General Industry)\n- Primary contact name and email\n- Assigned account manager (employee ID)\n- Short descriptive **brief**\n- Current overall **deal phase**\n- High‑level status (e.g. “Key account”, “Curious but cautious”, “Dormant”)\n\nFor each **opportunity / relationship** (at company level):\n\n- The **deal phase**:\n  - `idea` – new lead, early conversation.\n  - `exploring` – deeper exploration, early trials.\n  - `active` – ongoing projects, regular business.\n  - `paused` – no current activity, but not lost.\n  - `archived` – relationship closed or no realistic future business.\n- Optional descriptive notes and tags.\n\n## Who uses the CRM?\n\n- **Sales & Customer Success**\n  - Primary owners of customer records and deal phases.\n- **Customer Service**\n  - Updates contact details and practical information.\n- **Management and Finance**\n  - Use CRM data for pipeline reviews and account prioritisation.\n- **Chatbot**\n  - Answers questions like “Who is the account manager for Customer X?” or “Show all active customers in Germany in the rail segment.”\n\n## Basic rules for using the CRM\n\n1. **Every active customer must exist in CRM.**\n   - No “shadow customers” known only via email or spreadsheets.\n2. **Each customer must have a clear account manager.**\n   - The account manager is responsible for keeping data up to date.\n3. **Use concise and informative briefs.**\n   - Explain who the customer is, what they do and why they matter.\n4. **Maintain deal phases realistically.**\n   - Reflect the true state of the commercial relationship, not wishful thinking.\n\n## Linking to other systems\n\n- **Project registry:**\n  - Projects always reference a **customer ID** from the CRM (unless internal).\n- **Time tracking:**\n  - Time entries for customer work show both the **customer** and the **project**, enabling customer profitability and effort analysis.\n- **Wiki and chatbot:**\n  - Wiki pages may describe key accounts or reference successful case studies.\n  - The chatbot provides quick overviews of customer status, contacts, projects and time summaries.\n\nKeeping CRM data clean and current is critical for accurate reporting and for the chatbot to give trustworthy answers.\n"
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766534827.522959
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "Now I have all the information needed. Let me create the draft wiki page explaining deal phases in plain language."
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_update",
+        "input": {
+          "file": "draft_deal_workflow.md",
+          "content": "# Deal Phases in the CRM – A Plain Language Guide\n\nThis document explains how deal phases work in our CRM system and when a customer relationship moves between stages.\n\n## What Are Deal Phases?\n\nDeal phases represent the current status of our commercial relationship with a customer. They help everyone understand where we stand with each customer – from first contact to ongoing business.\n\n## The Five Deal Phases\n\n1. **Idea** – This is where every customer relationship starts. We've just learned about a potential customer or had an early conversation. Think of it as \"we know their name and there might be something here.\"\n\n2. **Exploring** – We're now having deeper discussions. The customer is interested enough to learn more about what we can offer. This might include early product trials, technical discussions, or preliminary quotations. Both sides are evaluating whether there's a good fit.\n\n3. **Active** – This is where we want to be! The customer has ongoing projects with us and we're doing regular business together. They're buying our coatings and we're delivering value.\n\n4. **Paused** – The relationship has gone quiet. There's no current activity, but the door isn't closed. Maybe their project was delayed, or they're waiting for budget approval. We haven't lost them – things are just on hold.\n\n5. **Archived** – The relationship has ended. Either the customer chose a different supplier, went out of business, or there's simply no realistic future business. We keep the record for historical reference.\n\n## When Does a Customer Move from 'Exploring' to 'Active'?\n\nA customer moves from **exploring** to **active** when:\n\n- We start working on **actual projects** together (not just trials)\n- There is **regular, ongoing business** – not a one-time purchase\n- Real products are being delivered and used\n\nIn simple terms: **exploring** means \"we're figuring out if this will work,\" while **active** means \"we're doing business together.\"\n\n## Important Reminders\n\n- **Keep phases realistic** – Record the true state of the relationship, not wishful thinking\n- **Account managers are responsible** for keeping deal phases current\n- **Every active customer must be in the CRM** – no shadow customers in emails or spreadsheets\n\nAccurate deal phases help management understand our pipeline and enable the chatbot to give trustworthy answers about customer status.\n"
+        },
+        "output": {},
+        "duration_sec": 0.15
+      }
+    ],
+    "timestamp": 1766534841.563541
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "I've created the wiki page `draft_deal_workflow.md` with a plain language explanation of how deal phases work in our CRM.\n\nThe document covers:\n\n1. **What deal phases are** – the status of our commercial relationship with each customer\n\n2. **The five phases explained simply:**\n   - **Idea** – first contact, early conversation\n   - **Exploring** – deeper discussions, trials, evaluating fit\n   - **Active** – ongoing projects, regular business\n   - **Paused** – quiet but not lost\n   - **Archived** – relationship ended\n\n3. **When 'exploring' becomes 'active'** – this happens when we move from trials and discussions to actual projects with regular, ongoing business\n\n4. **Key reminders** about keeping phases realistic and up to date\n\nThe content is based on our CRM documentation and written in accessible language for anyone in the company to understand.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "wiki",
+              "id": "draft_deal_workflow.md"
+            },
+            {
+              "kind": "wiki",
+              "id": "systems/crm.md"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.147
+      }
+    ],
+    "timestamp": 1766534848.123307
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: I've created the wiki page `draft_deal_workflow.md` with a plain language explanation of how deal ph",
+    "eval_logs": "",
+    "timestamp": 1766534848.1817758
+  }
+]

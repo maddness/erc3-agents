@@ -1,0 +1,205 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "broken_system",
+    "task_text": "List all my projects",
+    "config_version": "v082",
+    "timestamp": 1766260777.923737
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "timo_van_dijk",
+          "is_public": false,
+          "location": "Amsterdam",
+          "department": "Software Engineering",
+          "today": "2025-02-04",
+          "wiki_sha1": "88b8cbb59fa76fc6b74d8ee705d181910358cb18"
+        },
+        "duration_sec": 0.139
+      }
+    ],
+    "timestamp": 1766260780.901929
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [
+      "Now I need to find all projects where the current user (timo_van_dijk) is a team member. Let me search through all projects and check which ones include this user."
+    ],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "error": "Client error '400 Bad Request' for url 'https://erc.timetoact-group.at/erc3-dev/tsk-42ZDzrG3sAKEgmoCgWniEE/projects/search'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766260785.258226
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "Let me try listing projects instead:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "projects_list",
+        "input": {
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "error": "Client error '400 Bad Request' for url 'https://erc.timetoact-group.at/erc3-dev/tsk-42ZDzrG3sAKEgmoCgWniEE/projects/list'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+        },
+        "duration_sec": 0.057
+      }
+    ],
+    "timestamp": 1766260788.426073
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "offset": 0
+        },
+        "output": {
+          "error": "Client error '400 Bad Request' for url 'https://erc.timetoact-group.at/erc3-dev/tsk-42ZDzrG3sAKEgmoCgWniEE/projects/search'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766260791.3074582
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [
+      "I'm experiencing repeated API errors. Let me try a different approach:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "employees_get",
+        "input": {
+          "id": "timo_van_dijk"
+        },
+        "output": {
+          "employee": {
+            "id": "timo_van_dijk",
+            "name": "Timo van Dijk",
+            "email": "timo_van_dijk@aetherion.com",
+            "salary": 90000,
+            "notes": "Software Engineer; backend-focused, cares about stability, observability, and clean infra.",
+            "location": "Amsterdam",
+            "department": "Software Engineering",
+            "skills": [
+              {
+                "name": "cross_functional_collab",
+                "level": 4
+              },
+              {
+                "name": "data_engineering",
+                "level": 4
+              },
+              {
+                "name": "mlops_infra",
+                "level": 4
+              },
+              {
+                "name": "risk_awareness",
+                "level": 4
+              },
+              {
+                "name": "software_engineering",
+                "level": 5
+              }
+            ],
+            "wills": [
+              {
+                "name": "edge_ai",
+                "level": 4
+              },
+              {
+                "name": "experimentation_mindset",
+                "level": 4
+              },
+              {
+                "name": "knowledge_sharing",
+                "level": 3
+              },
+              {
+                "name": "ml_engineering",
+                "level": 4
+              }
+            ]
+          }
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766260795.5706758
+  },
+  {
+    "type": "llm_turn",
+    "turn": 6,
+    "text_blocks": [
+      "Good, I confirmed the employee exists. The employees_get does not return projects. Let me try the projects list with a proper format:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "projects_list",
+        "input": {
+          "limit": 5
+        },
+        "output": {
+          "error": "Client error '400 Bad Request' for url 'https://erc.timetoact-group.at/erc3-dev/tsk-42ZDzrG3sAKEgmoCgWniEE/projects/list'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"
+        },
+        "duration_sec": 0.048
+      }
+    ],
+    "timestamp": 1766260799.518445
+  },
+  {
+    "type": "llm_turn",
+    "turn": 7,
+    "text_blocks": [
+      "I've now received 3+ consecutive API errors when trying to access project data. Based on the guidelines, I should report this as an internal error."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "I apologize, but I'm experiencing technical difficulties accessing the project system. The API is returning errors when trying to retrieve project information. Please try again later or contact IT support if the issue persists.",
+          "outcome": "error_internal",
+          "links": []
+        },
+        "output": {},
+        "duration_sec": 0.138
+      }
+    ],
+    "timestamp": 1766260805.293549
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "error_internal: I apologize, but I'm experiencing technical difficulties accessing the project system. The API is re",
+    "eval_logs": "",
+    "timestamp": 1766260805.349157
+  }
+]

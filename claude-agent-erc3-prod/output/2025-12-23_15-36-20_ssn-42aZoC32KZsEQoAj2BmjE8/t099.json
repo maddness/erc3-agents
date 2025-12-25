@@ -1,0 +1,119 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t099",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Gabriele Ventura log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v093",
+    "timestamp": 1766493881.3067882
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "QR23_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.144
+      }
+    ],
+    "timestamp": 1766493884.2459168
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Gabriele Ventura",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "QR23_058",
+              "name": "Gabriele Ventura",
+              "email": "QR23_058@bellini.internal",
+              "salary": 68000,
+              "location": "HQ – Italy",
+              "department": "Production – Italy"
+            }
+          ]
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766493887.405299
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "QR23_058"
+          ]
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "QR23_058",
+              "total_hours": 9.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.051
+      }
+    ],
+    "timestamp": 1766493892.181677
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Gabriele Ventura logged a total of 9.5 hours:\n- Billable hours: 7.5\n- Non-billable hours: 2.0",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "QR23_058"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.097
+      }
+    ],
+    "timestamp": 1766493896.0686872
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Gabriele Ventura logged a total of 9.5 hours:\n- Billable hours: 7",
+    "eval_logs": "",
+    "timestamp": 1766493896.122015
+  }
+]

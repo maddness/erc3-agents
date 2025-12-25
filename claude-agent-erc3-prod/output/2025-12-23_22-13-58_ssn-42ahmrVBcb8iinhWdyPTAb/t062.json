@@ -1,0 +1,168 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t062",
+    "task_text": "Where can I read about how time tracking works, and what are the main reasons we track time? Tell me the name of the wiki file",
+    "config_version": "v100",
+    "timestamp": 1766517354.794574
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "6KR2_151",
+          "is_public": false,
+          "location": "HQ - Italy",
+          "department": "External",
+          "today": "2025-08-12",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.14
+      }
+    ],
+    "timestamp": 1766517357.159879
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [
+      "I see that I'm working as an external department user. Let me search the wiki for time tracking information."
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_search",
+        "input": {
+          "query_regex": "time.*track|tracking.*time"
+        },
+        "output": {
+          "results": [
+            {
+              "content": "\n- **1980s – Quality systems.** Formal QA and HSE practices are introduced. The “Bellini Coatings” brand is established for export markets.\n- **Early 1990s – IT era.** The company implements its first integrated business systems, built on **Progress OpenEdge**. These systems (CRM, project registry, time tracking, employee registry) form the backbone still in use today.\n- **Late 1990s – EU expansion.** Sales offices are opened in Germany and France to support growing OEM customers.\n",
+              "linum": 20,
+              "path": "company/history.md"
+            },
+            {
+              "content": "- **2015–2020 – Incremental modernisation.** Reporting and some workflows are improved, but the core Progress systems remain largely unchanged. Employees become increasingly reliant on spreadsheets and email alongside the mainframe.\n- **2020–2023 – New generation.** Giulia Bellini, representing the 4th generation, becomes CEO. She pushes for better use of data and a more structured approach to innovation and customer collaboration.\n- **2023 onwards – Chatbot initiative.** Rather than replacing the entire legacy stack, Bellini opts to **wrap existing systems with a chatbot interface**. The chatbot provides natural‑language access to CRM, projects, time tracking, employee data and the wiki, making it easier for employees to find information and perform routine actions.\n\nBellini’s history is characterised by **pragmatic evolution**: careful steps that preserve stability and know‑how while gradually adopting new practices and technologies.",
+              "linum": 33,
+              "path": "company/history.md"
+            },
+            {
+              "content": "  - Staff: regional sales manager (also covering neighbouring countries), sales support.\n\nAll branches access the same **central CRM, project registry, employee registry and time tracking** systems via terminal or thin client, and rely heavily on email, Excel and the internal wiki.\n\n## Remote and hybrid work",
+              "linum": 64,
+              "path": "company/locations_and_sites.md"
+            },
+            {
+              "content": "- **Finance & Administration:** 12  \n\nThese department names are used consistently in the **employee registry**, time tracking and other systems.\n\n## Reporting relationships",
+              "linum": 67,
+              "path": "company/organization_and_hierarchy.md"
+            },
+            {
+              "content": "\n- Ensuring that **projects** in their area have clear owners.\n- Checking that **time tracking** for their team is complete and reasonable.\n- Encouraging team members to keep their **skills and wills** profiles updated.\n",
+              "linum": 80,
+              "path": "company/organization_and_hierarchy.md"
+            }
+          ]
+        },
+        "duration_sec": 0.048
+      }
+    ],
+    "timestamp": 1766517360.682625
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "The search found references to time tracking in various wiki files, but these seem to be just mentions. Let me search more specifically for a dedicated time tracking guide or policy."
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_list",
+        "input": {},
+        "output": {
+          "sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b",
+          "paths": [
+            "business/marketing_and_sales_approach.md",
+            "business/markets_and_customers.md",
+            "company/history.md",
+            "company/locations_and_sites.md",
+            "company/mission_vision_values.md",
+            "company/organization_and_hierarchy.md",
+            "company/overview.md",
+            "hr/example_employee_profiles.md",
+            "hr/people_and_roles.md",
+            "hr/skills_and_wills_model.md",
+            "index.md",
+            "operations/factories_and_production.md",
+            "systems/chatbot_interface.md",
+            "systems/crm.md",
+            "systems/employee_registry.md",
+            "systems/knowledge_base.md",
+            "systems/overview.md",
+            "systems/project_registry.md",
+            "systems/time_tracking_and_reporting.md"
+          ]
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766517364.113418
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I found it. There's a dedicated wiki file called `systems/time_tracking_and_reporting.md`. Let me load its content."
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_load",
+        "input": {
+          "file": "systems/time_tracking_and_reporting.md"
+        },
+        "output": {
+          "file": "systems/time_tracking_and_reporting.md",
+          "content": "# Time Tracking & Reporting\n\nBellini Coatings uses a central **time tracking system** to understand how employees spend their time across customers, projects and internal activities.\n\nMost non‑production employees (and selected production roles) are required to log time regularly.\n\n## Time entry structure\n\nEach time entry contains:\n\n- Employee (employee ID)\n- Customer (optional, usually derived from project)\n- Project (project ID, customer or internal)\n- Date (YYYY‑MM‑DD)\n- Hours (decimal, e.g. 1.0, 7.5)\n- Work category (e.g. `customer_project`, `internal`, `support`, `admin`)\n- Notes (short free text)\n- Billable flag (billable vs non‑billable)\n- Status:\n  - `draft`\n  - `submitted`\n  - `approved`\n  - `invoiced`\n  - `voided`\n\n## Lifecycle of time entries\n\n1. **Draft**\n   - Employee is still editing; corrections are allowed.\n2. **Submitted**\n   - Employee considers entries complete for the period (e.g. week, month).\n3. **Approved**\n   - Supervisor or operations has reviewed entries for consistency.\n4. **Invoiced**\n   - Entries have been used for billing or customer reporting; they are effectively locked.\n5. **Voided**\n   - Entry has been cancelled (e.g. wrong project). Usually paired with a correcting entry.\n\nAfter approval, employees cannot change entries directly; corrections require specific processes to ensure an audit trail.\n\n## Why we track time\n\n- **Customer profitability**\n  - Understand how much effort is invested in supporting each customer.\n- **Project costing**\n  - Analyse efforts spent on different project types and stages.\n- **Workload monitoring**\n  - Identify overloaded employees or teams.\n- **Internal improvements**\n  - Quantify time spent on non‑customer initiatives (e.g. training, digital projects).\n\n## Usage expectations\n\n- Employees should log time **at least weekly**, ideally daily.\n- Use **projects** consistently:\n  - Customer work → customer projects.\n  - Internal initiatives → internal projects (e.g. “IT – Chatbot Pilot 2025”).\n- Notes should be concise but informative (what was done, not just “meeting”).\n- Project leads can log entries for the team members in draft mode. They are NOT allowed to submit entries for them.\n\n## Reporting and summaries\n\nThe system can aggregate and summarise time in different ways:\n\n- **By project and customer**\n  - Hours, billable vs non‑billable, number of distinct employees.\n- **By employee**\n  - Total hours, distribution between customer work and internal activities.\n\nThe chatbot can answer questions like:\n\n- “How many hours did we spend on Customer X last quarter?”\n- “Show time spent by Sara Romano on project P‑2025‑017 this year.”\n- “Which employees logged more than 45 hours in the past week?”\n\nCorrect and timely time logging is essential for good data and fair decisions.\n\n## Workload estimation\n\nNote, that when estimating workload (e.g. who is busiest or non-busiest), we rely on workload time slices via Project registry."
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766517367.789463
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [
+      "I now have all the information needed to answer the question."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "You can read about how time tracking works in the wiki file **systems/time_tracking_and_reporting.md**.\n\nThe main reasons we track time at Bellini Coatings are:\n\n1. **Customer profitability** - To understand how much effort is invested in supporting each customer\n2. **Project costing** - To analyze efforts spent on different project types and stages\n3. **Workload monitoring** - To identify overloaded employees or teams\n4. **Internal improvements** - To quantify time spent on non-customer initiatives (e.g., training, digital projects)",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "wiki",
+              "id": "systems/time_tracking_and_reporting.md"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.135
+      }
+    ],
+    "timestamp": 1766517373.781843
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: You can read about how time tracking works in the wiki file **systems/time_tracking_and_reporting.md",
+    "eval_logs": "",
+    "timestamp": 1766517373.838915
+  }
+]

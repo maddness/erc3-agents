@@ -1,0 +1,119 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t100",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Arianna Orlando log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v092",
+    "timestamp": 1766489630.007334
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "Bhwa_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.359
+      }
+    ],
+    "timestamp": 1766489634.796981
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Arianna Orlando",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "Bhwa_081",
+              "name": "Arianna Orlando",
+              "email": "Bhwa_081@bellini.internal",
+              "salary": 51000,
+              "location": "HQ – Italy",
+              "department": "Production – Italy"
+            }
+          ]
+        },
+        "duration_sec": 0.49
+      }
+    ],
+    "timestamp": 1766489640.571962
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "Bhwa_081"
+          ]
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "Bhwa_081",
+              "total_hours": 9.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.115
+      }
+    ],
+    "timestamp": 1766489644.838816
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Arianna Orlando logged a total of 9.5 hours:\n- Billable hours: 7.5\n- Non-billable hours: 2.0",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "Bhwa_081"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.117
+      }
+    ],
+    "timestamp": 1766489649.061889
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Arianna Orlando logged a total of 9.5 hours:\n- Billable hours: 7.",
+    "eval_logs": "",
+    "timestamp": 1766489649.162967
+  }
+]

@@ -1,0 +1,119 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t100",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Sanne van den Heuvel log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v102",
+    "timestamp": 1766532501.917429
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "Bhwa_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.141
+      }
+    ],
+    "timestamp": 1766532504.6988459
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Sanne van den Heuvel",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "Bhwa_025",
+              "name": "Sanne van den Heuvel",
+              "email": "Bhwa_025@bellini.internal",
+              "salary": 87000,
+              "location": "Rotterdam Office – Netherlands",
+              "department": "Sales & Customer Success"
+            }
+          ]
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766532506.654227
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "Bhwa_025"
+          ]
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "Bhwa_025",
+              "total_hours": 9.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766532509.341567
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Sanne van den Heuvel logged a total of 9.5 hours:\n- **Billable hours:** 7.5\n- **Non-billable hours:** 2.0",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "Bhwa_025"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766532512.441885
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Sanne van den Heuvel logged a total of 9.5 hours:\n- **Billable ho",
+    "eval_logs": "",
+    "timestamp": 1766532512.5012789
+  }
+]

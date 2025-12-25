@@ -1,0 +1,119 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t099",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Carlotta Sarti log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v095",
+    "timestamp": 1766496309.429913
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "QR23_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.146
+      }
+    ],
+    "timestamp": 1766496312.5997849
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Carlotta Sarti",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "QR23_080",
+              "name": "Carlotta Sarti",
+              "email": "QR23_080@bellini.internal",
+              "salary": 47000,
+              "location": "HQ – Italy",
+              "department": "Production – Italy"
+            }
+          ]
+        },
+        "duration_sec": 0.045
+      }
+    ],
+    "timestamp": 1766496314.8669472
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "QR23_080"
+          ]
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "QR23_080",
+              "total_hours": 9.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.045
+      }
+    ],
+    "timestamp": 1766496318.673493
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Carlotta Sarti logged a total of 9.5 hours:\n- Billable hours: 7.5\n- Non-billable hours: 2.0",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "QR23_080"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766496322.469493
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Carlotta Sarti logged a total of 9.5 hours:\n- Billable hours: 7.5",
+    "eval_logs": "",
+    "timestamp": 1766496322.5217438
+  }
+]

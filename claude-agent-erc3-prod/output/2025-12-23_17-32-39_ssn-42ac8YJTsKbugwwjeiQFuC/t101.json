@@ -1,0 +1,176 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t101",
+    "task_text": "I accidentally logged 8 hours on Wall and ceiling coating phase 2 on 2025-05-10, but I only worked 6. Please void that time entry and create new copy with 8 hours.",
+    "config_version": "v098",
+    "timestamp": 1766500649.303541
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "iv5n_077",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Production – Italy",
+          "today": "2025-05-20",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.137
+      }
+    ],
+    "timestamp": 1766500654.943462
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "Wall and ceiling coating phase 2",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": [
+            {
+              "id": "proj_freshfoods_wall_coating_phase2",
+              "name": "Wall and ceiling coating phase 2",
+              "customer": "cust_freshfoods",
+              "status": "active"
+            }
+          ],
+          "next_offset": -1
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766500657.537722
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_search",
+        "input": {
+          "employee": "iv5n_077",
+          "project": "proj_freshfoods_wall_coating_phase2",
+          "date_from": "2025-05-10",
+          "date_to": "2025-05-10",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "entries": [
+            {
+              "id": "te_050",
+              "employee": "iv5n_077",
+              "customer": "cust_freshfoods",
+              "project": "proj_freshfoods_wall_coating_phase2",
+              "date": "2025-05-10",
+              "hours": 8,
+              "work_category": "customer_project",
+              "notes": "Initial entry with incorrect hours",
+              "billable": true,
+              "status": "submitted"
+            }
+          ],
+          "next_offset": -1,
+          "total_hours": 8,
+          "total_billable": 8,
+          "total_non_billable": 0
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766500661.608634
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "I found the time entry with 8 hours on 2025-05-10. Now I'll void that entry and create a new one with 8 hours as you requested."
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_update",
+        "input": {
+          "id": "te_050",
+          "status": "voided"
+        },
+        "output": {},
+        "duration_sec": 0.244
+      },
+      {
+        "tool": "time_log",
+        "input": {
+          "employee": "iv5n_077",
+          "project": "proj_freshfoods_wall_coating_phase2",
+          "date": "2025-05-10",
+          "hours": 8,
+          "billable": true,
+          "work_category": "customer_project",
+          "status": "draft"
+        },
+        "output": {
+          "id": "te_051",
+          "employee": "iv5n_077",
+          "customer": "",
+          "project": "proj_freshfoods_wall_coating_phase2",
+          "date": "2025-05-10",
+          "hours": 8,
+          "work_category": "customer_project",
+          "notes": "",
+          "billable": true,
+          "status": "draft"
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766500667.850453
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Done! I've voided the original time entry (te_050) with 8 hours and created a new entry (te_051) with 8 hours for Wall and ceiling coating phase 2 on 2025-05-10.\n\nNote: You mentioned you only worked 6 hours, but asked me to create the new entry with 8 hours. The new entry has been created with 8 hours as you requested. If you meant to correct it to 6 hours instead, please let me know and I can adjust it.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "project",
+              "id": "proj_freshfoods_wall_coating_phase2"
+            },
+            {
+              "kind": "customer",
+              "id": "cust_freshfoods"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.143
+      }
+    ],
+    "timestamp": 1766500674.470162
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Done! I've voided the original time entry (te_050) with 8 hours and created a new entry (te_051) wit",
+    "eval_logs": "",
+    "timestamp": 1766500674.5304
+  }
+]

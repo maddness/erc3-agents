@@ -1,0 +1,333 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t101",
+    "task_text": "I accidentally logged 8 hours on Paint defect audit for railcars on 2025-05-10, but I only worked 6. Please void that time entry and create new copy with 8 hours.",
+    "config_version": "v094",
+    "timestamp": 1766495545.523489
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "iv5n_038",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "R&D and Technical Service",
+          "today": "2025-05-20",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.137
+      }
+    ],
+    "timestamp": 1766495548.9916139
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "Paint defect audit for railcars",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": null,
+          "next_offset": -1
+        },
+        "duration_sec": 0.045
+      }
+    ],
+    "timestamp": 1766495552.026573
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "Paint defect audit",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": null,
+          "next_offset": -1
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766495555.339561
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "railcars",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": [
+            {
+              "id": "proj_ferro_rail_ecofriendly_topcoat_idea",
+              "name": "Eco-friendly topcoat concept study",
+              "customer": "cust_ferro_rail",
+              "status": "idea"
+            }
+          ],
+          "next_offset": -1
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766495559.3036401
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "defect audit",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": null,
+          "next_offset": -1
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766495562.762729
+  },
+  {
+    "type": "llm_turn",
+    "turn": 6,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "Paint",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": [
+            {
+              "id": "proj_adriatic_port_crane_repaint",
+              "name": "Port crane repainting specification",
+              "customer": "cust_adriatic_marine_services",
+              "status": "exploring"
+            }
+          ],
+          "next_offset": -1
+        },
+        "duration_sec": 0.048
+      }
+    ],
+    "timestamp": 1766495566.013848
+  },
+  {
+    "type": "llm_turn",
+    "turn": 7,
+    "text_blocks": [
+      "Let me search more broadly to find this project:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "projects_search",
+        "input": {
+          "query": "audit",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "projects": null,
+          "next_offset": -1
+        },
+        "duration_sec": 0.045
+      }
+    ],
+    "timestamp": 1766495569.927082
+  },
+  {
+    "type": "llm_turn",
+    "turn": 8,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_search",
+        "input": {
+          "employee": "iv5n_038",
+          "date_from": "2025-05-10",
+          "date_to": "2025-05-10",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "entries": [
+            {
+              "id": "te_050",
+              "employee": "iv5n_038",
+              "customer": "cust_ferro_rail",
+              "project": "proj_ferro_rail_paint_defect_audit",
+              "date": "2025-05-10",
+              "hours": 8,
+              "work_category": "customer_project",
+              "notes": "Initial entry with incorrect hours",
+              "billable": true,
+              "status": "submitted"
+            }
+          ],
+          "next_offset": -1,
+          "total_hours": 8,
+          "total_billable": 8,
+          "total_non_billable": 0
+        },
+        "duration_sec": 0.047
+      }
+    ],
+    "timestamp": 1766495574.0715
+  },
+  {
+    "type": "llm_turn",
+    "turn": 9,
+    "text_blocks": [
+      "I found the time entry. Now let me void it and create a new entry with the corrected hours (8 hours as the user requested):"
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_update",
+        "input": {
+          "id": "te_050",
+          "status": "voided"
+        },
+        "output": {},
+        "duration_sec": 0.143
+      },
+      {
+        "tool": "projects_get",
+        "input": {
+          "id": "proj_ferro_rail_paint_defect_audit"
+        },
+        "output": {
+          "project": {
+            "id": "proj_ferro_rail_paint_defect_audit",
+            "name": "Paint defect audit for railcars",
+            "description": "Root cause analysis and audit of recurring paint defects on selected FerroRail railcars.",
+            "customer": "cust_ferro_rail",
+            "status": "archived",
+            "team": [
+              {
+                "employee": "iv5n_029",
+                "time_slice": 0.3,
+                "role": "Lead"
+              },
+              {
+                "employee": "iv5n_038",
+                "time_slice": 0.4,
+                "role": "Engineer"
+              },
+              {
+                "employee": "iv5n_118",
+                "time_slice": 0.3,
+                "role": "QA"
+              }
+            ]
+          },
+          "found": true
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766495578.751882
+  },
+  {
+    "type": "llm_turn",
+    "turn": 10,
+    "text_blocks": [
+      "Good, the entry is voided. Now I'll create the new entry with 8 hours as the user requested:"
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_log",
+        "input": {
+          "employee": "iv5n_038",
+          "project": "proj_ferro_rail_paint_defect_audit",
+          "date": "2025-05-10",
+          "hours": 8,
+          "billable": true,
+          "work_category": "customer_project",
+          "status": "draft"
+        },
+        "output": {
+          "id": "te_051",
+          "employee": "iv5n_038",
+          "customer": "",
+          "project": "proj_ferro_rail_paint_defect_audit",
+          "date": "2025-05-10",
+          "hours": 8,
+          "work_category": "customer_project",
+          "notes": "",
+          "billable": true,
+          "status": "draft"
+        },
+        "duration_sec": 0.046
+      }
+    ],
+    "timestamp": 1766495583.311745
+  },
+  {
+    "type": "llm_turn",
+    "turn": 11,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Done! I've voided your original time entry (te_050) for 8 hours on 2025-05-10 and created a new entry (te_051) with 8 hours on the same date for the \"Paint defect audit for railcars\" project.\n\nNote: You mentioned you only worked 6 hours but asked me to create the new entry with 8 hours. If you'd like me to correct it to 6 hours instead, please let me know.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "project",
+              "id": "proj_ferro_rail_paint_defect_audit"
+            },
+            {
+              "kind": "customer",
+              "id": "cust_ferro_rail"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.145
+      }
+    ],
+    "timestamp": 1766495589.052591
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Done! I've voided your original time entry (te_050) for 8 hours on 2025-05-10 and created a new entr",
+    "eval_logs": "",
+    "timestamp": 1766495589.1530209
+  }
+]

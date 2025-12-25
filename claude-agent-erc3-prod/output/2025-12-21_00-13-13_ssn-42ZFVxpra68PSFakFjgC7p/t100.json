@@ -1,0 +1,147 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t100",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Sofia Bianchi log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v089",
+    "timestamp": 1766265595.555413
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "Bhwa_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.144
+      },
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Sofia Bianchi",
+          "limit": 5
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "Bhwa_111",
+              "name": "Sofia Bianchi",
+              "email": "Bhwa_111@bellini.internal",
+              "salary": 70000,
+              "location": "HQ – Italy",
+              "department": "Logistics & Supply Chain"
+            }
+          ]
+        },
+        "duration_sec": 0.048
+      }
+    ],
+    "timestamp": 1766265598.431489
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [
+      "I found Sofia Bianchi. Now let me search for her time entries in February 2025."
+    ],
+    "tool_calls": [
+      {
+        "tool": "time_search",
+        "input": {
+          "employee": "Bhwa_111",
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "limit": 5
+        },
+        "output": {
+          "entries": [
+            {
+              "id": "te_010",
+              "employee": "Bhwa_111",
+              "customer": "cust_ferro_rail",
+              "project": "proj_ferro_rail_infra_masts",
+              "date": "2025-02-03",
+              "hours": 3,
+              "work_category": "customer_project",
+              "notes": "Customer meeting and line walk",
+              "billable": true,
+              "status": "submitted"
+            },
+            {
+              "id": "te_011",
+              "employee": "Bhwa_111",
+              "customer": "cust_ferro_rail",
+              "project": "proj_ferro_rail_infra_masts",
+              "date": "2025-02-10",
+              "hours": 2,
+              "work_category": "internal",
+              "notes": "Internal preparation for trials",
+              "billable": false,
+              "status": "submitted"
+            },
+            {
+              "id": "te_012",
+              "employee": "Bhwa_111",
+              "customer": "cust_ferro_rail",
+              "project": "proj_ferro_rail_bogie_anticorrosion",
+              "date": "2025-02-21",
+              "hours": 4.5,
+              "work_category": "customer_project",
+              "notes": "On‑site support",
+              "billable": true,
+              "status": "submitted"
+            }
+          ],
+          "next_offset": -1,
+          "total_hours": 9.5,
+          "total_billable": 7.5,
+          "total_non_billable": 2
+        },
+        "duration_sec": 0.049
+      }
+    ],
+    "timestamp": 1766265602.01692
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "I have all the time entry data for Sofia Bianchi in February 2025. Let me provide the summary."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Sofia Bianchi logged a total of 9.5 hours:\n\n- **Billable hours:** 7.5\n- **Non-billable hours:** 2\n\nThe breakdown by entry:\n1. Feb 3: 3 hours (billable) - Customer meeting and line walk\n2. Feb 10: 2 hours (non-billable) - Internal preparation for trials\n3. Feb 21: 4.5 hours (billable) - On-site support",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "Bhwa_111"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.145
+      }
+    ],
+    "timestamp": 1766265608.6703858
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Sofia Bianchi logged a total of 9.5 hours:\n\n- **Billable hours:**",
+    "eval_logs": "",
+    "timestamp": 1766265608.732518
+  }
+]

@@ -1,0 +1,119 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t100",
+    "task_text": "Between 2025-02-01 and 2025-02-28, how many hours in total did Olja Stojković log, and how many of those hours were billable versus non‑billable?",
+    "config_version": "v103",
+    "timestamp": 1766535197.1192992
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "Bhwa_133",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Human Resources (HR)",
+          "today": "2025-03-05",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.154
+      }
+    ],
+    "timestamp": 1766535200.3493
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "employees_search",
+        "input": {
+          "query": "Olja Stojković",
+          "limit": 5,
+          "offset": 0
+        },
+        "output": {
+          "next_offset": -1,
+          "employees": [
+            {
+              "id": "Bhwa_093",
+              "name": "Olja Stojković",
+              "email": "Bhwa_093@bellini.internal",
+              "salary": 61000,
+              "location": "Serbian Plant",
+              "department": "Production – Serbia"
+            }
+          ]
+        },
+        "duration_sec": 0.05
+      }
+    ],
+    "timestamp": 1766535203.336996
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "time_summary_by_employee",
+        "input": {
+          "date_from": "2025-02-01",
+          "date_to": "2025-02-28",
+          "employees": [
+            "Bhwa_093"
+          ]
+        },
+        "output": {
+          "summaries": [
+            {
+              "employee": "Bhwa_093",
+              "total_hours": 9.5,
+              "billable_hours": 7.5,
+              "non_billable_hours": 2
+            }
+          ]
+        },
+        "duration_sec": 0.053
+      }
+    ],
+    "timestamp": 1766535206.364908
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "Between 2025-02-01 and 2025-02-28, Olja Stojković logged a total of 9.5 hours:\n- Billable hours: 7.5\n- Non-billable hours: 2.0",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "employee",
+              "id": "Bhwa_093"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.051
+      }
+    ],
+    "timestamp": 1766535209.955602
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: Between 2025-02-01 and 2025-02-28, Olja Stojković logged a total of 9.5 hours:\n- Billable hours: 7.5",
+    "eval_logs": "",
+    "timestamp": 1766535210.011888
+  }
+]

@@ -1,0 +1,148 @@
+[
+  {
+    "type": "task_start",
+    "spec_id": "t065",
+    "task_text": "Write a short, plain-language explanation of how time entry statuses (draft, submitted, approved, invoiced, voided) work in our system, and save it as systems/time_status_overview.md in the wiki.",
+    "config_version": "v089",
+    "timestamp": 1766265403.1816268
+  },
+  {
+    "type": "llm_turn",
+    "turn": 1,
+    "text_blocks": [],
+    "tool_calls": [
+      {
+        "tool": "whoami",
+        "input": {},
+        "output": {
+          "current_user": "ayEi_001",
+          "is_public": false,
+          "location": "HQ – Italy",
+          "department": "Corporate Leadership",
+          "today": "2025-07-22",
+          "wiki_sha1": "ff65ea3a9e74ba1aecb232d9fbf2b35a2415d32b"
+        },
+        "duration_sec": 0.148
+      }
+    ],
+    "timestamp": 1766265406.21758
+  },
+  {
+    "type": "llm_turn",
+    "turn": 2,
+    "text_blocks": [
+      "I'm an internal user from Corporate Leadership. Let me first check if there's any existing wiki content about time entry statuses that I should reference, and then create the new article."
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_search",
+        "input": {
+          "query_regex": "time.*status|draft|submitted|approved|invoiced|voided"
+        },
+        "output": {
+          "results": [
+            {
+              "content": "3. R&D develops or adapts a formulation.\n4. Application specialists run lab and field trials.\n5. Once approved, the solution moves into ongoing supply with technical support.\n\nThis project-centric way of working is deeply integrated with our internal systems (CRM, project registry, time tracking) and reflects how we think about value: **long‑term partnerships built around tailored solutions.**",
+              "linum": 41,
+              "path": "company/overview.md"
+            },
+            {
+              "content": "- Develops and optimises solventborne coatings based on project briefs.\n- Designs lab tests and works with application specialists on field trials.\n- Documents approved systems and test protocols in the wiki.\n\n### Skills (1–10)",
+              "linum": 57,
+              "path": "hr/example_employee_profiles.md"
+            },
+            {
+              "content": "- Preserve and share **know‑how** across locations and generations.\n- Provide clear **process descriptions** for onboarding and daily work.\n- Document **approved solutions**, best practices and lessons learned.\n- Serve as a key source of context for the **chatbot**.\n",
+              "linum": 9,
+              "path": "systems/knowledge_base.md"
+            },
+            {
+              "content": "- Billable flag (billable vs non‑billable)\n- Status:\n  - `draft`\n  - `submitted`\n  - `approved`",
+              "linum": 20,
+              "path": "systems/time_tracking_and_reporting.md"
+            },
+            {
+              "content": "- Status:\n  - `draft`\n  - `submitted`\n  - `approved`\n  - `invoiced`",
+              "linum": 21,
+              "path": "systems/time_tracking_and_reporting.md"
+            }
+          ]
+        },
+        "duration_sec": 0.062
+      }
+    ],
+    "timestamp": 1766265410.208874
+  },
+  {
+    "type": "llm_turn",
+    "turn": 3,
+    "text_blocks": [
+      "I found a reference to the time entry statuses in `systems/time_tracking_and_reporting.md`. Let me load the full content to understand the existing documentation better."
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_load",
+        "input": {
+          "file": "systems/time_tracking_and_reporting.md"
+        },
+        "output": {
+          "file": "systems/time_tracking_and_reporting.md",
+          "content": "# Time Tracking & Reporting\n\nBellini Coatings uses a central **time tracking system** to understand how employees spend their time across customers, projects and internal activities.\n\nMost non‑production employees (and selected production roles) are required to log time regularly.\n\n## Time entry structure\n\nEach time entry contains:\n\n- Employee (employee ID)\n- Customer (optional, usually derived from project)\n- Project (project ID, customer or internal)\n- Date (YYYY‑MM‑DD)\n- Hours (decimal, e.g. 1.0, 7.5)\n- Work category (e.g. `customer_project`, `internal`, `support`, `admin`)\n- Notes (short free text)\n- Billable flag (billable vs non‑billable)\n- Status:\n  - `draft`\n  - `submitted`\n  - `approved`\n  - `invoiced`\n  - `voided`\n\n## Lifecycle of time entries\n\n1. **Draft**\n   - Employee is still editing; corrections are allowed.\n2. **Submitted**\n   - Employee considers entries complete for the period (e.g. week, month).\n3. **Approved**\n   - Supervisor or operations has reviewed entries for consistency.\n4. **Invoiced**\n   - Entries have been used for billing or customer reporting; they are effectively locked.\n5. **Voided**\n   - Entry has been cancelled (e.g. wrong project). Usually paired with a correcting entry.\n\nAfter approval, employees cannot change entries directly; corrections require specific processes to ensure an audit trail.\n\n## Why we track time\n\n- **Customer profitability**\n  - Understand how much effort is invested in supporting each customer.\n- **Project costing**\n  - Analyse efforts spent on different project types and stages.\n- **Workload monitoring**\n  - Identify overloaded employees or teams.\n- **Internal improvements**\n  - Quantify time spent on non‑customer initiatives (e.g. training, digital projects).\n\n## Usage expectations\n\n- Employees should log time **at least weekly**, ideally daily.\n- Use **projects** consistently:\n  - Customer work → customer projects.\n  - Internal initiatives → internal projects (e.g. “IT – Chatbot Pilot 2025”).\n- Notes should be concise but informative (what was done, not just “meeting”).\n- Project leads can log entries for the team members in draft mode. They are NOT allowed to submit entries for them.\n\n## Reporting and summaries\n\nThe system can aggregate and summarise time in different ways:\n\n- **By project and customer**\n  - Hours, billable vs non‑billable, number of distinct employees.\n- **By employee**\n  - Total hours, distribution between customer work and internal activities.\n\nThe chatbot can answer questions like:\n\n- “How many hours did we spend on Customer X last quarter?”\n- “Show time spent by Sara Romano on project P‑2025‑017 this year.”\n- “Which employees logged more than 45 hours in the past week?”\n\nCorrect and timely time logging is essential for good data and fair decisions.\n\n## Workload estimation\n\nNote, that when estimating workload (e.g. who is busiest or non-busiest), we rely on workload time slices via Project registry."
+        },
+        "duration_sec": 0.05
+      }
+    ],
+    "timestamp": 1766265413.2527518
+  },
+  {
+    "type": "llm_turn",
+    "turn": 4,
+    "text_blocks": [
+      "Now I have a good understanding of the time entry statuses. Let me create a short, plain-language overview of how time entry statuses work and save it to the wiki."
+    ],
+    "tool_calls": [
+      {
+        "tool": "wiki_update",
+        "input": {
+          "file": "systems/time_status_overview.md",
+          "content": "# Time Entry Status Overview\n\nThis is a quick guide to the five statuses a time entry can have in our system.\n\n## The Five Statuses\n\n**Draft**\nYour entry is still being worked on. You can edit it freely—change the hours, project, date, or notes anytime.\n\n**Submitted**\nYou've marked the entry as complete. This tells your supervisor it's ready for review. You're saying \"this is accurate, please approve it.\"\n\n**Approved**\nYour supervisor has checked the entry and confirmed it looks correct. Once approved, you can no longer edit it directly. If something is wrong, you'll need to follow a correction process.\n\n**Invoiced**\nThe entry has been used for customer billing or reporting. It's now locked and part of our financial records.\n\n**Voided**\nThe entry has been cancelled—usually because it was logged to the wrong project or contains an error. When an entry is voided, a new correcting entry is typically created to replace it.\n\n## How Entries Move Through Statuses\n\n1. You create an entry → it starts as **Draft**\n2. When you're done editing → you move it to **Submitted**\n3. Your supervisor reviews it → they mark it **Approved**\n4. Finance uses it for billing → it becomes **Invoiced**\n5. If something was wrong → it can be **Voided** at various stages\n\n## Key Points\n\n- You can edit freely while in **Draft**\n- After **Approved**, changes require a formal correction process\n- **Voided** entries stay in the system for audit purposes—they're cancelled, not deleted\n"
+        },
+        "output": {},
+        "duration_sec": 0.245
+      }
+    ],
+    "timestamp": 1766265425.067442
+  },
+  {
+    "type": "llm_turn",
+    "turn": 5,
+    "text_blocks": [
+      "The wiki article has been created successfully."
+    ],
+    "tool_calls": [
+      {
+        "tool": "respond",
+        "input": {
+          "message": "I've created a new wiki article at **systems/time_status_overview.md** with a plain-language explanation of the five time entry statuses:\n\n- **Draft** – Still editing, fully changeable\n- **Submitted** – Ready for supervisor review\n- **Approved** – Confirmed correct, locked from employee edits\n- **Invoiced** – Used for billing, fully locked\n- **Voided** – Cancelled (but kept for audit trail)\n\nThe article explains how entries flow through these statuses and highlights key points like when editing is allowed and why voided entries aren't deleted.",
+          "outcome": "ok_answer",
+          "links": [
+            {
+              "kind": "wiki",
+              "id": "systems/time_status_overview.md"
+            }
+          ]
+        },
+        "output": {},
+        "duration_sec": 0.318
+      }
+    ],
+    "timestamp": 1766265431.836303
+  },
+  {
+    "type": "task_end",
+    "score": 1.0,
+    "summary": "ok_answer: I've created a new wiki article at **systems/time_status_overview.md** with a plain-language explana",
+    "eval_logs": "",
+    "timestamp": 1766265431.897117
+  }
+]
